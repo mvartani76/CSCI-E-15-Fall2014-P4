@@ -16,7 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/practice-creating', function() {
+Route::get('/practice-creating-user', function() {
 
     # Instantiate a new Book model class
     $user = new User();
@@ -43,7 +43,7 @@ Route::get('/practice-creating', function() {
 
 });
 
-Route::get('/practice-reading', function() {
+Route::get('/practice-reading-user', function() {
 
     # The all() method will fetch all the rows from a Model/table
     $users = User::all();
@@ -51,7 +51,7 @@ Route::get('/practice-reading', function() {
     # Make sure we have results before trying to print them...
     if($users->isEmpty() != TRUE) {
 
-        # Typically we'd pass $books to a View, but for quick and dirty demonstration, let's just output here...
+        # Typically we'd pass $users to a View, but for quick and dirty demonstration, let's just output here...
         foreach($users as $user) {
             echo $user->username.'<br>';
         }
@@ -75,7 +75,7 @@ Route::get('/practice-reading-one-user', function() {
 
 });
 
-Route::get('/practice-updating', function() {
+Route::get('/practice-updating-user', function() {
 
     # First get a user to update
     $user = User::where('username', 'LIKE', 'mvartani76')->first();
@@ -97,7 +97,7 @@ Route::get('/practice-updating', function() {
 
 });
 
-Route::get('/practice-deleting', function() {
+Route::get('/practice-deleting-user', function() {
 
     # First get a user to delete
     $user = User::where('username', 'LIKE', 'mvartani76')->first();
@@ -116,6 +116,29 @@ Route::get('/practice-deleting', function() {
     }
 
 });
+
+Route::get('/practice-creating-permission', function() {
+
+    # Instantiate a new Book model class
+    $permission = new Permission();
+
+    # Set 
+    $permission->permission_level = 'Admin';
+    $permission->view = TRUE;
+    $permission->add = TRUE;
+    $permission->update = TRUE;
+    $permission->delete = TRUE;
+    $permission->approve = TRUE;
+    $permission->customize = TRUE;
+
+    # This is where the Eloquent ORM magic happens
+    $permission->save();
+
+    return 'A new permission has been added! Check your database to see...';
+
+});
+
+
 
 Route::get('/debug', function() {
 
