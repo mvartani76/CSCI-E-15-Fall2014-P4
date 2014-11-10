@@ -138,7 +138,31 @@ Route::get('/practice-creating-permission', function() {
 
 });
 
+// Display the form for a new user
+Route::get('/create-user', function() {
+    return View::make('create-user');
+});
+// Process form for a new user
+Route::post('/create-user', function() {
 
+    $user = new User();
+    $user->first_name = Input::get('first_name');
+    $user->last_name = Input::get('last_name');
+    $user->company_name = Input::get('company_name');
+    $user->username = Input::get('user_name');
+    $user->address_1 = Input::get('address_1');
+    $user->address_2 = Input::get('address_2');
+    $user->city = Input::get('city');
+    $user->state = Input::get('state');
+    $user->zip_code = Input::get('zip_code');
+    $user->email = Input::get('email');
+    $user->mobile_phone = Input::get('mobile_phone');
+    $user->password = Input::get('password');
+
+    $user->save();
+    return 'Your user was created';
+
+});
 
 Route::get('/debug', function() {
 
