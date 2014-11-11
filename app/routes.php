@@ -164,6 +164,26 @@ Route::post('/create-user', function() {
 
 });
 
+Route::get('/create-permission', function() {
+    return View::make('create-permission');
+});
+// Process form for a new permission
+Route::post('/create-permission', function() {
+
+    $permission = new Permission();
+    $permission->permission_level = Input::get('permission_level');
+    $permission->view = Input::get('view');
+    $permission->add = Input::get('add');
+    $permission->update = Input::get('update');
+    $permission->delete = Input::get('delete');
+    $permission->approve = Input::get('approve');
+    $permission->customize = Input::get('customize');
+    
+    $permission->save();
+    return 'Your permission was created';
+
+});
+
 Route::get('/debug', function() {
 
     echo '<pre>';
