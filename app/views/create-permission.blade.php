@@ -10,29 +10,29 @@
 			{{ Form::label('permission_level', 'Permission Level') }}
 			{{ Form::text('permission_level') }}</br></br>
 
-			{{ Form::label('view', 'View') }}
-			{{ Form::radio('view', '1') }} True
-			{{ Form::radio('view', '0') }} False</br></br>
+			{{ Form::label('p_view', 'View') }}
+			{{ Form::radio('p_view', '1') }} True
+			{{ Form::radio('p_view', '0') }} False</br></br>
 
-			{{ Form::label('add', 'Add') }}
-			{{ Form::radio('add', '1') }} True
-			{{ Form::radio('add', '0') }} False</br></br>
+			{{ Form::label('p_add', 'Add') }}
+			{{ Form::radio('p_add', '1') }} True
+			{{ Form::radio('p_add', '0') }} False</br></br>
 
-			{{ Form::label('update', 'Update') }}
-			{{ Form::radio('update', '1') }} True
-			{{ Form::radio('update', '0') }} False</br></br>
+			{{ Form::label('p_update', 'Update') }}
+			{{ Form::radio('p_update', '1') }} True
+			{{ Form::radio('p_update', '0') }} False</br></br>
 
-			{{ Form::label('delete', 'Delete') }}
-			{{ Form::radio('delete', '1') }} True
-			{{ Form::radio('delete', '0') }} False</br></br>
+			{{ Form::label('p_delete', 'Delete') }}
+			{{ Form::radio('p_delete', '1') }} True
+			{{ Form::radio('p_delete', '0') }} False</br></br>
 
-			{{ Form::label('approve', 'Approve') }}
-			{{ Form::radio('approve', '1') }} True
-			{{ Form::radio('approve', '0') }} False</br></br>
+			{{ Form::label('p_approve', 'Approve') }}
+			{{ Form::radio('p_approve', '1') }} True
+			{{ Form::radio('p_approve', '0') }} False</br></br>
 
-			{{ Form::label('customize', 'Customize') }}
-			{{ Form::radio('customize', '1') }} True
-			{{ Form::radio('customize', '0') }} False</br></br>
+			{{ Form::label('p_customize', 'Customize') }}
+			{{ Form::radio('p_customize', '1') }} True
+			{{ Form::radio('p_customize', '0') }} False</br></br>
 
 			{{ Form::submit() }}
 

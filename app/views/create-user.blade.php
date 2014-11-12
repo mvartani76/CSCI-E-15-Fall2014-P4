@@ -34,6 +34,9 @@
 			{{ Form::label('zip_code', 'Zip Code') }}
 			{{ Form::text('zip_code') }}</br></br>
 
+			{{ Form::label('country', 'Country') }}
+			{{ Form::text('country') }}</br></br>
+
 			{{ Form::label('email', 'Email Address') }}
 			{{ Form::email('email') }}</br></br>
 

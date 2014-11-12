@@ -16,4 +16,10 @@ class Permission extends Eloquent implements UserInterface, RemindableInterface 
 	 */
 	protected $table = 'permissions';
 
+	public function user() {
+		# Permission has many Users
+        # Define a one-to-many relationship.
+        return $this->hasMany('User');
+    }
+
 }

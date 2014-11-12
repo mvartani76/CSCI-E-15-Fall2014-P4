@@ -31,10 +31,10 @@ Route::get('/practice-creating-user', function() {
     $user->city = 'Commerce Township';
     $user->state = 'Michigan';
     $user->zip_code = '48390';
+    $user->country = 'United States';
     $user->email = 'mike.vartanian@gmail.com';
     $user->mobile_phone = '+12482144561';
     $user->password = 'mypassword';
-    $user->user_role = 'Admin';            
 
     # This is where the Eloquent ORM magic happens
     $user->save();
@@ -57,17 +57,18 @@ Route::get('/practice-reading-user', function() {
         }
     }
     else {
-        return 'No books found';
+        return 'No users found';
     }
 
 });
 
 Route::get('/practice-reading-one-user', function() {
 
-    $user = User::where('user_role', 'LIKE', 'Admin')->first();
+    $user = User::where('permission_id', 'LIKE', '1')->first();
 
     if($user) {
-        return $user->username;
+        echo $user->username.'<br>';
+        echo $user->permission->p_view;
     }
     else {
         return 'User not found.';
@@ -102,7 +103,7 @@ Route::get('/practice-deleting-user', function() {
     # First get a user to delete
     $user = User::where('username', 'LIKE', 'mvartani76')->first();
 
-    # If we found the book, delete it
+    # If we found the user, delete it
     if($user) {
 
         # Goodbye!
@@ -124,12 +125,12 @@ Route::get('/practice-creating-permission', function() {
 
     # Set 
     $permission->permission_level = 'Admin';
-    $permission->view = TRUE;
-    $permission->add = TRUE;
-    $permission->update = TRUE;
-    $permission->delete = TRUE;
-    $permission->approve = TRUE;
-    $permission->customize = TRUE;
+    $permission->p_view = TRUE;
+    $permission->p_add = TRUE;
+    $permission->p_update = TRUE;
+    $permission->p_delete = TRUE;
+    $permission->p_approve = TRUE;
+    $permission->p_customize = TRUE;
 
     # This is where the Eloquent ORM magic happens
     $permission->save();
@@ -155,9 +156,13 @@ Route::post('/create-user', function() {
     $user->city = Input::get('city');
     $user->state = Input::get('state');
     $user->zip_code = Input::get('zip_code');
+    $user->country = Input::get('country');
     $user->email = Input::get('email');
     $user->mobile_phone = Input::get('mobile_phone');
     $user->password = Input::get('password');
+
+    # set the default permission level
+    $user->permission_id = 1;
 
     $user->save();
     return 'Your user was created';
@@ -168,21 +173,23 @@ Route::get('/create-permission', function() {
     return View::make('create-permission');
 });
 // Process form for a new permission
-Route::post('/create-permission', function() {
+Route::post('/create-permission', array('before'=>'csrf',
+
+    function() {
 
     $permission = new Permission();
     $permission->permission_level = Input::get('permission_level');
-    $permission->view = Input::get('view');
-    $permission->add = Input::get('add');
-    $permission->update = Input::get('update');
-    $permission->delete = Input::get('delete');
-    $permission->approve = Input::get('approve');
-    $permission->customize = Input::get('customize');
+    $permission->p_view = Input::get('p_view');
+    $permission->p_add = Input::get('p_add');
+    $permission->p_update = Input::get('p_update');
+    $permission->p_delete = Input::get('p_delete');
+    $permission->p_approve = Input::get('p_approve');
+    $permission->p_customize = Input::get('p_customize');
     
     $permission->save();
     return 'Your permission was created';
 
-});
+}));
 
 Route::get('/debug', function() {
 
