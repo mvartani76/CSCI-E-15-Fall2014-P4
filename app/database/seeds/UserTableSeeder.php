@@ -3,10 +3,6 @@ class UserTableSeeder extends Seeder {
 	public function run() {
 		# Clear the tables to a blank slate
 		DB::statement('SET FOREIGN_KEY_CHECKS=0'); # Disable FK constraints so that all rows can be deleted, even if there's an associated FK
-		DB::statement('TRUNCATE books');
-		DB::statement('TRUNCATE authors');
-		DB::statement('TRUNCATE tags');
-		DB::statement('TRUNCATE book_tag');
 		DB::statement('TRUNCATE users');
 
 		# Users
