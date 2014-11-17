@@ -19,6 +19,10 @@ As a remote student, my demo is located in jing at the following location (TBD).
 
 ### Interesting Observations / Code Modifications
 
+## Outside Code
+Used the following GitHub for login form inspiration...
+https://gist.github.com/bMinaise/7329874
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
