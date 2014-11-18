@@ -2,6 +2,12 @@
 
 class BaseController extends Controller {
 
+	/* Make sure every controller is protected from CSRF attacks */
+	public function _construct() {
+
+		$this->beforeFilter('csrf', array('on' => 'post'));
+	}
+
 	/**
 	 * Setup the layout used by the controller.
 	 *
