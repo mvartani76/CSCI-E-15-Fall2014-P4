@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+/* Use a controller to get the Index logic */
+Route::get('/', 'IndexController@getIndex');
 
 Route::get('/practice-creating-user', function() {
 
@@ -190,6 +188,32 @@ Route::post('/create-permission', array('before'=>'csrf',
     return 'Your permission was created';
 
 }));
+
+Route::get('/create-project', function() {
+    return View::make('create-project');
+});
+// Process form for a new project
+Route::post('/create-project', array('before'=>'csrf',
+
+    function() {
+
+    $project = new Project();
+    $project->project_name = Input::get('project_name');
+    $project->project_description = Input::get('project_description');
+    $project->start_year = Input::get('start_year');
+    $project->end_year = Input::get('end_year');
+    $project->tax_rate = Input::get('tax_rate');
+    $project->discount_rate = Input::get('discount_rate');
+    $project->terminal_rd = Input::get('terminal_rd');
+    $project->terminal_sga = Input::get('terminal_sga');
+    $project->terminal_growth_rate = Input::get('terminal_growth_rate');
+    $project->capex_percentage = Input::get('capex_percentage');
+    
+    $project->save();
+    return 'Your Project was created';
+
+}));
+
 
 Route::get('/debug', function() {
 
