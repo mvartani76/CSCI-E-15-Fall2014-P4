@@ -14,6 +14,16 @@
 /* Use a controller to get the Index logic */
 Route::get('/', 'IndexController@getIndex');
 
+// Display the form for a new user
+// Using a controller to show this form as well as additional logic/validation
+Route::get('/create-user', 'UserController@getCreateuser');
+Route::get('/login', 'UserController@getLogin' );
+Route::post('/create-user', ['before' => 'csrf', 'uses' => 'UserController@postCreateuser'] );
+Route::post('/login', ['before' => 'csrf', 'uses' => 'UserController@postLogin'] );
+Route::get('/logout', ['before' => 'auth', 'uses' => 'UserController@getLogout'] );
+
+
+
 Route::get('/practice-creating-user', function() {
 
     # Instantiate a new Book model class
@@ -134,36 +144,6 @@ Route::get('/practice-creating-permission', function() {
     $permission->save();
 
     return 'A new permission has been added! Check your database to see...';
-
-});
-
-// Display the form for a new user
-Route::get('/create-user', function() {
-    return View::make('create-user');
-});
-// Process form for a new user
-Route::post('/create-user', function() {
-
-    $user = new User();
-    $user->first_name = Input::get('first_name');
-    $user->last_name = Input::get('last_name');
-    $user->company_name = Input::get('company_name');
-    $user->username = Input::get('user_name');
-    $user->address_1 = Input::get('address_1');
-    $user->address_2 = Input::get('address_2');
-    $user->city = Input::get('city');
-    $user->state = Input::get('state');
-    $user->zip_code = Input::get('zip_code');
-    $user->country = Input::get('country');
-    $user->email = Input::get('email');
-    $user->mobile_phone = Input::get('mobile_phone');
-    $user->password = Input::get('password');
-
-    # set the default permission level
-    $user->permission_id = 1;
-
-    $user->save();
-    return 'Your user was created';
 
 });
 
