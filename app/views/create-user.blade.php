@@ -3,53 +3,81 @@
 		@extends('master')
 
 		@section('content')
-		<h1>Create a New User</h1>
 
-		{{ Form::open(array('url' => '/create-user')) }}
+		<div class="container">
+			<div class="col-sm-6 col-md-4 col-md-offset-4">
+				<h1 class="text-center">Create a New User</h1>
 
-			{{ Form::label('first_name', 'First Name') }}
-			{{ Form::text('first_name') }}</br></br>
+				@if ( Session::has('flash_message') )			 
+				  <div class= "alert {{ Session::get('flash_type') }}">
+				      <h3>{{ Session::get('flash_message') }}</h3>
+				  </div>			  
+				@endif
 
-			{{ Form::label('last_name', 'Last Name') }}
-			{{ Form::text('last_name') }}</br></br>
-			
-			{{ Form::label('company_name', 'Company Name') }}
-			{{ Form::text('company_name') }}</br></br>
+				@foreach($errors->all() as $message)
+					<div>{{ $message }}</div>
+				@endforeach
+				<div class="account-wall">
+					<div class="form-signin">
+						{{ Form::open(array('url' => '/create-user')) }}
 
-			{{ Form::label('user_name', 'User Name') }}
-			{{ Form::text('user_name') }}</br></br>
 
-			{{ Form::label('address_1', 'Address 1') }}
-			{{ Form::text('address_1') }}</br></br>
+							{{ Form::text('first_name', Null, array('class' => 'form-control', 'placeholder' => 'First Name', 'required', 'autofocus')) }}
+							{{ Form::text('last_name', Null, array('class' => 'form-control', 'placeholder' => 'Last Name', 'required', 'autofocus')) }}
+							{{ Form::text('company_name', Null, array('class' => 'form-control', 'placeholder' => 'Company Name', 'autofocus')) }}
+							{{ Form::text('username', Null, array('class' => 'form-control', 'placeholder' => 'User Name', 'required', 'autofocus')) }}
 
-			{{ Form::label('address_2', 'Address 2') }}
-			{{ Form::text('address_2') }}</br></br>
+							{{ Form::text('address_1', Null, array('class' => 'form-control', 'placeholder' => 'Address 1', 'autofocus')) }}
+							{{ Form::text('address_2', Null, array('class' => 'form-control', 'placeholder' => 'Address 2', 'autofocus')) }}
 
-			{{ Form::label('city', 'City') }}
-			{{ Form::text('city') }}</br></br>
+							{{ Form::text('city', Null, array('class' => 'form-control', 'placeholder' => 'City', 'autofocus')) }}
 
-			{{ Form::label('state', 'State') }}
-			{{ Form::text('state') }}</br></br>
+							{{ Form::select('state', array(	'Alabama' => 'Alabama', 'Alaska' => 'Alaska',
+															'Arizona' => 'Arizona', 'Arkansas' => 'Arkansas',
+															'California' => 'California', 'Colorado' => 'Colorado',
+															'Connecticut' => 'Connecticut', 'Delaware' => 'Delaware',
+															'Florida' => 'Florida', 'Georgia' => 'Georgia',
+															'Hawaii' => 'Hawaii', 'Idaho' => 'Idaho',
+															'Illinois' => 'Illinois', 'Indiana' => 'Indiana',
+															'Iowa' => 'Iowa', 'Kansa' => 'Kansas',
+															'Kentucky' => 'Kentucky', 'Louisiana' => 'Louisiana',
+															'Maine' => 'Maine', 'Maryland' => 'Maryland',
+															'Massachusetts' => 'Massachusetts', 'Michigan' => 'Michigan',
+															'Minnesota' => 'Minnesota', 'Mississippi' => 'Mississippi',
+															'Missouri' => 'Missouri', 'Montana' => 'Montana',
+															'Nebraska' => 'Nebraska', 'Nevada' => 'Nevada',
+															'New Hampshire' => 'New Hampshire', 'New Jersey' => 'New Jersey',
+															'New Mexico' => 'New Mexico', 'New York' => 'New York',
+															'North Carolina' => 'North Carolina', 'North Dakota' => 'North Dakota',
+															'Ohio' => 'Ohio', 'Oklahoma' => 'Oklahoma',
+															'Oregon' => 'Oregon', 'Pennsylvania' => 'Pennsylvania',
+															'Rhode Island' => 'Rhode Island', 'South Carolina' => 'South Carolina',
+															'South Dakota' => 'South Dakota', 'Tennessee' => 'Tennessee',
+															'Texas' => 'Texas', 'Utah' => 'Utah',
+															'Vermont' => 'Vermont', 'Virginia' => 'Virginia',
+															'Washington' => 'Washington', 'West Virginia' => 'West Virginia',
+															'Wisconsin' => 'Wisconsin', 'Wyoming' => 'Wyoming'),
+															Null, array('class' => 'form-control', 'placeholder' => 'State', 'autofocus')) }}
 
-			{{ Form::label('zip_code', 'Zip Code') }}
-			{{ Form::text('zip_code') }}</br></br>
+							{{ Form::text('zip_code', Null, array('class' => 'form-control', 'placeholder' => 'Zip Code', 'autofocus')) }}
 
-			{{ Form::label('country', 'Country') }}
-			{{ Form::text('country') }}</br></br>
+							{{ Form::select('country', array(	'Canada' => 'Canada', 'China' => 'China',
+																'France' => 'France', 'Germany' => 'Germany',
+																'United Kingdom' => 'United Kingdom', 'United States' => 'United States'),
+																Null, array('class' => 'form-control', 'placeholder' => 'Country', 'autofocus')) }}
+							
 
-			{{ Form::label('email', 'Email Address') }}
-			{{ Form::email('email') }}</br></br>
+							{{ Form::text('email', Null, array('class' => 'form-control', 'placeholder' => 'Email Address', 'required', 'autofocus')) }}
+							{{ Form::text('mobile_phone', Null, array('class' => 'form-control', 'placeholder' => 'Mobile Phone Number', 'required', 'autofocus')) }}
+							{{ Form::text('password', Null, array('class' => 'form-control', 'placeholder' => 'Password', 'required', 'autofocus')) }}
 
-			{{ Form::label('mobile_phone', 'Mobile Number') }}
-			{{ Form::text('mobile_phone') }}</br></br>
+							{{ Form::submit('Create User', array('class'=>'btn btn-lg btn-primary btn-block')) }}
 
-			{{ Form::label('password', 'Password') }}
-			{{ Form::password('password') }}</br></br>
-
-			{{ Form::submit() }}
-
-		{{ Form::close() }}
-
+						{{ Form::close() }}
+					</div>
+				</div>
+			</div>
+		</div>
 		@stop
 	</body>
 </html>
