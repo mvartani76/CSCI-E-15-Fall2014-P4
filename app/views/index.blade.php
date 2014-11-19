@@ -12,21 +12,23 @@
 
 	<div class="container">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center">Financial Valuation Web App Sign-In</h1>
+			<h1 class="text-center">Financial Valuation Web App Sign-In</h1>
             <div class="account-wall">
-                <form class="form-signin">
-                <input type="text" class="form-control" placeholder="Email" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Sign in</button>
+				<div class="form-signin">
+
+					{{ Form::email('email', Null, array('class' => 'form-control', 'placeholder' => 'Email', 'required', 'autofocus')) }}
+
+					{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Password', 'required'))}}
+					{{ Form::submit('Sign In', array('class'=>'btn btn-lg btn-primary btn-block'))}}
+				</div>
+				<!-- Tried using laravel here but could not get the generated html to match -->
                 <label class="checkbox pull-left">
                     <input type="checkbox" value="remember-me">
                     Remember me
                 </label>
                 <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
-                </form>
             </div>
-            <a href="#" class="text-center new-account">Create an account </a>
+            {{ link_to('/create-user', 'Create a New Account', array("class"=>"text-center new-account btn btn-warning")) }}
         </div>
     </div>
 
