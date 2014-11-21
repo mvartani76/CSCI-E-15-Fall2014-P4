@@ -15,11 +15,12 @@
 			<h1 class="text-center">Financial Valuation Web App Sign-In</h1>
             <div class="account-wall">
 				<div class="form-signin">
-
+                {{ Form::open(array('url' => '/')) }}   
 					{{ Form::email('email', Null, array('class' => 'form-control', 'placeholder' => 'Email', 'required', 'autofocus')) }}
 
 					{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Password', 'required'))}}
 					{{ Form::submit('Sign In', array('class'=>'btn btn-lg btn-primary btn-block'))}}
+                {{ Form::close() }}
 				</div>
 				<!-- Tried using laravel here but could not get the generated html to match -->
                 <label class="checkbox pull-left">
