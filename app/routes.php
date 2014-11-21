@@ -13,15 +13,19 @@
 
 /* Use a controller to get the Index logic */
 Route::get('/', 'IndexController@getIndex');
+Route::post('/', ['before' => 'csrf', 'uses' => 'IndexController@postIndex'] );
+Route::get('/logout', ['before' => 'auth', 'uses' => 'IndexController@getLogout'] );
 
 // Display the form for a new user
 // Using a controller to show this form as well as additional logic/validation
 Route::get('/create-user', 'UserController@getCreateuser');
-Route::get('/login', 'UserController@getLogin' );
-Route::post('/create-user', ['before' => 'csrf', 'uses' => 'UserController@postCreateuser'] );
-Route::post('/login', ['before' => 'csrf', 'uses' => 'UserController@postLogin'] );
-Route::get('/logout', ['before' => 'auth', 'uses' => 'UserController@getLogout'] );
 
+Route::post('/create-user', ['before' => 'csrf', 'uses' => 'UserController@postCreateuser'] );
+
+
+Route::get('/user-dashboard', function() {
+        return View::make('user-dashboard');
+    });
 
 
 Route::get('/practice-creating-user', function() {
