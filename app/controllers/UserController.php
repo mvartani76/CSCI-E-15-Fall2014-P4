@@ -62,7 +62,7 @@ class UserController extends BaseController {
 		}
 		# Log in
 		Auth::login($user);
-		return Redirect::to('/')->with('flash_message', 'Welcome to the Financial Valuation Web Application!');
+		return Redirect::to('/user-dashboard')->with('flash_message', 'Welcome to the Financial Valuation Web Application!');
 	}
 	/**
 	* Display the login form
@@ -71,30 +71,4 @@ class UserController extends BaseController {
 	public function getLogin() {
 		return View::make('login');
 	}
-	/**
-	* Process the login form
-	* @return View
-	*/
-	public function postLogin() {
-		$credentials = Input::only('email', 'password');
-		if (Auth::attempt($credentials, $remember = true)) {
-			return Redirect::intended('/')->with('flash_message', 'Welcome Back!');
-		}
-		else {
-			return Redirect::to('/login')
-				->with('flash_message', 'Log in failed; please try again.')
-				->withInput();
-		}
-		return Redirect::to('login');
-	}
-	/**
-	* Logout
-	* @return Redirect
-	*/
-	public function getLogout() {
-		# Log out
-		Auth::logout();
-		# Send them to the homepage
-		return Redirect::to('/');
-	}
-}
+	
