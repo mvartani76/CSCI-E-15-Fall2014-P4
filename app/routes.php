@@ -22,11 +22,18 @@ Route::get('/create-user', 'UserController@getCreateuser');
 
 Route::post('/create-user', ['before' => 'csrf', 'uses' => 'UserController@postCreateuser'] );
 
+Route::get('/edit-user/{id}', 'UserController@getEdituser');
+
 
 Route::get('/user-dashboard', function() {
         return View::make('user-dashboard');
     });
 
+Route::get('/user-admin', function() {
+
+        $users = User::all();
+        return View::make('user-admin',['users' => $users]);
+    });
 
 Route::get('/practice-creating-user', function() {
 
