@@ -1,8 +1,5 @@
 <?php
 class UserController extends BaseController {
-	/**
-	*
-	*/
 
     /**
 	* Show the new user signup form
@@ -11,6 +8,12 @@ class UserController extends BaseController {
 	public function getCreateuser() {
 		return View::make('create-user');
 	}
+
+	public function getEdituser($id) {
+		$user = User::find($id);
+		return View::make('edit-user',['user' => $user]);
+	}
+
 	/**
 	* Create a New User
 	* @return Redirect
@@ -71,4 +74,4 @@ class UserController extends BaseController {
 	public function getLogin() {
 		return View::make('login');
 	}
-	
+}
