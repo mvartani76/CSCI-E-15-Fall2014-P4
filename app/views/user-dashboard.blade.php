@@ -15,7 +15,7 @@
 
 		@section('content')
 		<h1>User Dashboard</h1>
-
+{{ (Auth::user()->username) }}
                 @if ( Session::has('flash_message') )            
                   <div class= "alert {{ Session::get('flash_type') }}">
                       <h3>{{ Session::get('flash_message') }}</h3>
@@ -72,7 +72,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-xs-3">
-                <i class="fa fa-shopping-cart fa-5x"></i>
+                <i class="fa fa-folder-open fa-5x"></i>
               </div>
             <div class="col-xs-9 text-right">
               <div class="huge">124</div>
