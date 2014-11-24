@@ -24,7 +24,8 @@
 				</div>
 				<!-- Tried using laravel here but could not get the generated html to match -->
                 <label class="checkbox pull-left">
-                    <input type="checkbox" value="remember-me">
+                    <input type="hidden" name= "remember_me" value = "false">
+                    <input type="checkbox" name = "remember_me" value= "true">
                     Remember me
                 </label>
                 <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
