@@ -17,8 +17,8 @@ class CreateProjectUserTable extends Migration {
 			# AI, PK
 			# none needed
 			# General data...
-			$table->integer('project_id')->unsigned();
-			$table->integer('user_id')->unsigned();
+			$table->integer('project_id')->unsigned()->nullable();
+			$table->integer('user_id')->unsigned()->nullable();
 			
 			# Define foreign keys...
 			$table->foreign('project_id')->references('id')->on('projects');
