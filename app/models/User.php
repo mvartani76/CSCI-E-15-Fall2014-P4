@@ -29,6 +29,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	return $this->belongsTo('Permission');
     }
 
+    public function projects()
+    {
+    	return $this->belongsToMany('Project');
+    }
+
+
 	/**
      * Get the user's full name by concatenating the first and last names
      *
