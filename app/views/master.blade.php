@@ -7,7 +7,6 @@
 		<link rel='stylesheet' href='/css/finwebapp.css' type='text/css'>
 	
 	<body>
-		<div class="container">
 			<div class="page-header">
 				@yield('header')
 			</div>
@@ -20,7 +19,6 @@
 			<div class="page-footer">
 				@yield('footer')
 			</div>
-		</div>
 			@yield('misc')
 	</body>
 </html>
