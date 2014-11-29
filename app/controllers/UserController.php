@@ -14,6 +14,17 @@ class UserController extends BaseController {
 		return View::make('edit-user',['user' => $user]);
 	}
 
+	public function getUserdashboard($id) {
+		$user = User::find($id);
+		return View::make('user-dashboard',['user' => $user]);
+	}
+
+	public function getUserproject($id) {
+		$user = User::find($id);
+		return View::make('user-project',['user' => $user]);
+	}
+
+
 	/**
 	* Create a New User
 	* @return Redirect
@@ -65,7 +76,7 @@ class UserController extends BaseController {
 		}
 		# Log in
 		Auth::login($user);
-		return Redirect::to('/user-dashboard')->with('flash_message', 'Welcome to the Financial Valuation Web Application!');
+		return Redirect::to('/user-dashboard/{id}')->with('flash_message', 'Welcome to the Financial Valuation Web Application!');
 	}
 	/**
 	* Display the login form
