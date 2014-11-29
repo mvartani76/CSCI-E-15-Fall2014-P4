@@ -3,7 +3,7 @@
 		@extends('master')
 
 		@section('title')
-			Morris.js Bar Chart Example
+			User Dashboard
 		@stop
 
 		@section('header')      
@@ -15,7 +15,7 @@
 
 		@section('content')
 		<h1>User Dashboard</h1>
-{{ (Auth::user()->username) }}
+      {{ (Auth::user()->username) }}
                 @if ( Session::has('flash_message') )            
                   <div class= "alert {{ Session::get('flash_type') }}">
                       <h3>{{ Session::get('flash_message') }}</h3>
@@ -80,7 +80,7 @@
             </div>
           </div>
         </div>
-        <a href="#">
+        <a href="/user-project/{{ (Auth::user()->id) }}">
         <div class="panel-footer">
           <span class="pull-left">View Details</span>
           <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
