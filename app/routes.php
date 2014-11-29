@@ -25,9 +25,9 @@ Route::post('/create-user', ['before' => 'csrf', 'uses' => 'UserController@postC
 Route::get('/edit-user/{id}', 'UserController@getEdituser');
 
 
-Route::get('/user-dashboard', function() {
-        return View::make('user-dashboard');
-    });
+Route::get('/user-dashboard/{id}', 'UserController@getUserdashboard');
+
+Route::get('/user-project/{id}', 'UserController@getUserproject');
 
 Route::get('/user-admin', function() {
 
