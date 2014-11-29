@@ -11,15 +11,15 @@ class IndexController extends BaseController {
 	public function postIndex() {
 		$credentials = Input::only('email', 'password');
 		$remember_me = Input::get('remember_me');
-		if (Auth::attempt($credentials, $remember = 'false')) {
-			return Redirect::intended('/user-dashboard')->with('flash_message', 'Welcome Back!');
+		if (Auth::attempt($credentials, $remember_me = 'false')) {
+			return Redirect::intended('/user-dashboard/{id}')->with('flash_message', 'Welcome Back!');
 		}
 		else {
 			return Redirect::to('/')
 				->with('flash_message', 'Log in failed; please try again.')
 				->withInput();
 		}
-		return Redirect::to('/user-dashboard');
+		return Redirect::to('/user-dashboard/{id}');
 	}
 	/**
 	* Logout
