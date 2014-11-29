@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder {
 		$user1->country = 'United States';
 		$user1->email = 'user1@user1.com';
 		$user1->mobile_phone = '+11111234567';
-		$user1->password = 'mypassword';
+		$user1->password = Hash::make('user1password');
 		$user1->save();
 
 		$user2 = new User();
@@ -35,7 +35,7 @@ class UserTableSeeder extends Seeder {
 		$user2->country = 'United States';
 		$user2->email = 'user2@user2.com';
 		$user2->mobile_phone = '+12221234567';
-		$user2->password = 'user2password';
+		$user2->password = Hash::make('user2password');
 		$user2->projects()->attach(2);
 		$user2->save();
 
@@ -52,7 +52,7 @@ class UserTableSeeder extends Seeder {
 		$user3->country = 'United States';
 		$user3->email = 'user3@user3.com';
 		$user3->mobile_phone = '+13331234567';
-		$user3->password = 'user3password';
+		$user3->password = Hash::make('user3password');
 		$user3->projects()->attach(3);
 		$user3->save();
 
@@ -69,7 +69,7 @@ class UserTableSeeder extends Seeder {
 		$user4->country = 'United States';
 		$user4->email = 'user4@user4.com';
 		$user4->mobile_phone = '+14441234567';
-		$user4->password = 'user4password';
+		$user4->password = Hash::make('user4password');
 		$user4->projects()->attach(4);
 		$user4->save();
 
@@ -86,7 +86,7 @@ class UserTableSeeder extends Seeder {
 		$user5->country = 'United States';
 		$user5->email = 'user5@user5.com';
 		$user5->mobile_phone = '+15551234567';
-		$user5->password = 'user5password';
+		$user5->password = Hash::make('user5password');
 		$user5->projects()->attach(5);
 		$user5->save();
 	}
