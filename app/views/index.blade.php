@@ -15,7 +15,7 @@
 			<h1 class="text-center">Financial Valuation Web App Sign-In</h1>
             <div class="account-wall">
 				<div class="form-signin">
-                {{ Form::open(array('url' => '/')) }}   
+                {{ Form::open(array('url' => '/', 'method' => 'POST')) }}   
 					{{ Form::email('email', Null, array('class' => 'form-control', 'placeholder' => 'Email', 'required', 'autofocus')) }}
 
 					{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Password', 'required'))}}
