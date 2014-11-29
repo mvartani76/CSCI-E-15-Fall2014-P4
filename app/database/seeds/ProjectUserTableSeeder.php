@@ -8,6 +8,7 @@ class ProjectUserTableSeeder extends Seeder {
 		# Project-User
 		$user1 = User::find(1);
 		$user1->projects()->attach(1);
+		$user1->projects()->attach(3);
 		$user1->save();
 
 		$user2 = User::find(2);
