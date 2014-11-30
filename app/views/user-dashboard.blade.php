@@ -1,19 +1,18 @@
-<html>
-	<body>
 		@extends('master')
 
 		@section('title')
 			User Dashboard
 		@stop
 
-		@section('header')      
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-    {{ HTML::style('css/font-awesome.min.css'); }}
-    {{ HTML::style('css/sb-admin.css'); }}
-
-		@stop
-
 		@section('content')
+
+    <!-- set the authenticated $user to use
+    common names in the navigation bar below -->
+    <?php $user = Auth::user(); ?>
+
+    <!-- Include common navigation bar -->
+    @include('common-navigation')
+
 		<h1>User Dashboard</h1>
       {{ (Auth::user()->username) }}
                 @if ( Session::has('flash_message') )            
@@ -146,7 +145,3 @@ new Morris.Bar({
 });
 </script>
 @stop
-	</body>
-
- 
-</html>
