@@ -1,11 +1,13 @@
-<html>
-	<body>
+
 		@extends('master')
 
 		@section('content')
 		<h1>Create a New Project</h1>
 
-		{{ Form::open(array('url' => '/create-project')) }}
+    <!-- Include common navigation bar -->
+    @include('common-navigation')
+
+		{{ Form::open(array('url' => '/create-project/{id}')) }}
 
 			{{ Form::label('project_name', 'Project Name') }}
 			{{ Form::text('project_name') }}</br></br>
@@ -64,5 +66,3 @@
 		{{ Form::close() }}
 
 		@stop
-	</body>
-</html>
