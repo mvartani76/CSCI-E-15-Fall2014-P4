@@ -24,7 +24,6 @@ class UserController extends BaseController {
 		return View::make('user-project',['user' => $user]);
 	}
 
-
 	/**
 	* Create a New User
 	* @return Redirect
@@ -78,6 +77,69 @@ class UserController extends BaseController {
 		Auth::login($user);
 		return Redirect::to('/user-dashboard/{id}')->with('flash_message', 'Welcome to the Financial Valuation Web Application!');
 	}
+
+	public function getCreateproject($id) {
+		$user = User::find($id);
+		return View::make('create-project',['user' => $user]);
+	}
+
+	// Process form for a new project
+	public function postCreateproject($uid) {
+
+		$user = Auth::user();
+		# Step 1) Define the rules
+		$rules = array(
+			'project_name' => 'required',
+			'start_year' => 'required',
+			'end_year' => 'required',
+			'tax_rate' => 'required',
+			'discount_rate' => 'required',
+			'terminal_rd' => 'required',
+			'terminal_sga' => 'required',
+			'terminal_growth_rate' => 'required',
+			'capex_percentage' => 'required'
+		);
+		# Step 2)
+		$validator = Validator::make(Input::all(), $rules);
+		# Step 3
+		if($validator->fails()) {
+			return Redirect::to('/create-project/{$user->id}')
+				->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+				->with('flash_type', 'alert-danger')
+				->withInput()
+				->withErrors($validator);
+		}
+    
+	    $project = new Project();
+	    $project->project_name = Input::get('project_name');
+	    $project->project_description = Input::get('project_description');
+	    $project->start_year = Input::get('start_year');
+	    $project->end_year = Input::get('end_year');
+	    $project->tax_rate = Input::get('tax_rate');
+	    $project->discount_rate = Input::get('discount_rate');
+	    $project->terminal_rd = Input::get('terminal_rd');
+	    $project->terminal_sga = Input::get('terminal_sga');
+	    $project->terminal_growth_rate = Input::get('terminal_growth_rate');
+	    $project->capex_percentage = Input::get('capex_percentage');
+
+		$project->users()->attach($user->id);
+		
+	    
+	    try {
+			$project->save();
+			$user->projects()->attach($project->id);
+			$user->save();
+		}
+		catch (Exception $e) {
+			return Redirect::to('/create-project/{{$user->id}}')
+				->with('flash_message', 'Sign up failed; please try again.')
+				->with('flash_type', 'alert-danger')
+				->withInput();
+		}
+
+		return Redirect::to('/user-project/{{$user->id}}')->with('flash_message', 'Project Successfully Created!');		
+	}
+
 	/**
 	* Display the login form
 	* @return View
