@@ -12,6 +12,10 @@
 
         @section('content')
 
+        <!-- set the authenticated $user to use
+        common names in the navigation bar below -->
+        <?php $user = Auth::user(); ?>
+
         @include('common-navigation')
                       
                 <div class="container-fluid">
@@ -50,12 +54,10 @@
                         </table>
                     </div>
                  
-                    <a href="/create-project" class="btn btn-success">New Project</a>
+                    <a href="/create-project/{{ $user->id }}" class="btn btn-success">New Project</a>
                  
                 </div>
-            
-        
-    
+                
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/js/bootstrap.js"></script>
 
