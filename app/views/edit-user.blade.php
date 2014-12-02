@@ -1,5 +1,3 @@
-<html>
-	<body>
 		@extends('master')
 
 		@section('content')
