@@ -27,6 +27,11 @@ class Project extends Eloquent implements UserInterface, RemindableInterface {
         return $this->belongsToMany('Proforma');
     }
 
+	public function convert_to_percent($input) {
+		# converts decimal values to percent
+        echo ($input*100).'%';
+    }
+
     # Model events...
 	# http://laravel.com/docs/eloquent#model-events
 	public static function boot() {
