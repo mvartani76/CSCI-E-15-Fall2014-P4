@@ -39,6 +39,10 @@ Route::get('/create-project/{id}', 'UserController@getCreateproject');
 
 Route::post('/create-project/{id}', ['before' => 'csrf', 'uses' => 'UserController@postCreateproject'] );
 
+Route::get('/edit-project/{uid}/{pid}', 'UserController@getEditproject');
+
+Route::post('/edit-project/{uid}/{pid}', 'UserController@postEditproject');
+
 Route::get('/practice-creating-user', function() {
 
     # Instantiate a new Book model class
