@@ -43,7 +43,7 @@
                                     <td>{{ $project->created_at->format('F d, Y h:ia') }}</td>
                                     <td>{{ $user->updated_at->format('F d, Y h:ia') }}</td>
                                     <td>
-                                        <a href="/edit-project/{{ $project->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+                                        <a href="/edit-project/{{ $user->id }}/{{ $project->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
                                         {{ Form::open(['url' => '/project/' . $project->id, 'method' => 'DELETE']) }}
                                         {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         {{ Form::close() }}
