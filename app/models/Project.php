@@ -16,6 +16,9 @@ class Project extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'projects';
 
+    public $timestamps = true;
+
+
     public function users()
     {
     	return $this->belongsToMany('User');
@@ -29,8 +32,15 @@ class Project extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function convert_to_percent($input) {
 		# converts decimal values to percent
-        echo ($input*100).'%';
+		if (strpos($input,'%') !== false) {
+    		echo ($input*100).'%';
+    	}
+    	else
+    	{
+			echo $input.'%';
+		}
     }
+
 
     # Model events...
 	# http://laravel.com/docs/eloquent#model-events
