@@ -34,6 +34,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     	return $this->belongsToMany('Project');
     }
 
+    public function countprojects()
+    {
+    	$i = 0;
+		foreach ($this['projects'] as $project)
+		{
+			$i = $i+1;
+		}
+		return $i;
+    }
+
 
 	/**
      * Get the user's full name by concatenating the first and last names
