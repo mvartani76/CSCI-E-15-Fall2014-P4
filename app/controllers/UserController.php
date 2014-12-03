@@ -187,7 +187,6 @@ class UserController extends BaseController {
 	    $project->terminal_sga = Input::get('terminal_sga');
 	    $project->terminal_growth_rate = Input::get('terminal_growth_rate');
 	    $project->capex_percentage = Input::get('capex_percentage');
-
 	    
 	    try {
 			$project->save();
