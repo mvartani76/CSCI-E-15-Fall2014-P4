@@ -74,7 +74,7 @@
                 <i class="fa fa-folder-open fa-5x"></i>
               </div>
             <div class="col-xs-9 text-right">
-              <div class="huge">124</div>
+              <div class="huge">{{ (Auth::user()->countprojects()) }}</div>
               <div>Projects</div>
             </div>
           </div>
