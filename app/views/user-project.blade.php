@@ -20,7 +20,7 @@
                       
                 <div class="container-fluid">
                  
-                    <h1><i class="fa fa-users"></i> {{ $user->username }} User Projects <a href="/logout" class="btn btn-default pull-right">Logout</a></h1>
+                    <h1><i class="fa fa-users"></i> {{ $user->username }} User Projects <a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h1>
                  
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
