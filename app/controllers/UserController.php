@@ -43,13 +43,13 @@ class UserController extends BaseController {
 		
 
 		try {
-	        $project = Project::findOrFail($pid);
+	        $project = Project::findOrFail($pid)->destroy($pid);
+	        return Redirect::to('/user-project/{{ user->id }}')->with('flash_message', 'Project deleted.');
 	    }
 	    catch(exception $e) {
 	        return Redirect::to('/user-project/{{ user->id }}')->with('flash_message', 'Could not delete project - not found.');
 	    }
-	    Project::destroy(Input::get($pid));
-	    return Redirect::to('/user-project/{{ user->id }}')->with('flash_message', 'Project deleted.');
+	    
 	}
 
 	/**
@@ -150,7 +150,7 @@ class UserController extends BaseController {
 	    $project->terminal_growth_rate = Input::get('terminal_growth_rate');
 	    $project->capex_percentage = Input::get('capex_percentage');
 
-		$project->users()->attach($user->id);
+		#$project->users()->attach($user->id);
 		
 	    
 	    try {
