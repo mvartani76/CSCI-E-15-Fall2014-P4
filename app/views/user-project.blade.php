@@ -44,7 +44,7 @@
                                     <td>{{ $project->updated_at->format('F d, Y h:ia') }}</td>
                                     <td>
                                         <a href="/edit-project/{{ $user->id }}/{{ $project->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
-                                        {{ Form::open(['url' => '/project/' . $project->id, 'method' => 'DELETE']) }}
+                                        {{ Form::open(['url' => '/user-project/' .$user->id . '/' . $project->id, 'method' => 'DELETE']) }}
                                         {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         {{ Form::close() }}
                                     </td>
@@ -56,6 +56,17 @@
                  
                     <a href="/create-project/{{ $user->id }}" class="btn btn-success">New Project</a>
                  
+                @if ( Session::has('flash_message') )            
+                  <div class= "alert {{ Session::get('flash_type') }}">
+                      <h3>{{ Session::get('flash_message') }}</h3>
+                  </div>              
+                @endif
+
+                @foreach($errors->all() as $message)
+                    <div>{{ $message }}</div>
+                @endforeach
+
+
                 </div>
                 
     <script type="text/javascript" src="/js/jquery.js"></script>
