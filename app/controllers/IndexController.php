@@ -11,7 +11,7 @@ class IndexController extends BaseController {
 	public function postIndex() {
 		$credentials = Input::only('email', 'password');
 		$remember_me = Input::get('remember_me');
-		if (Auth::attempt($credentials, $remember_me = 'false')) {
+		if (Auth::attempt($credentials, $remember_me)) {
 			return Redirect::intended('/user-dashboard/{id}')->with('flash_message', 'Welcome Back!');
 		}
 		else {
