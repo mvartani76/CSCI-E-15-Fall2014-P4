@@ -1,6 +1,18 @@
 <?php
 class UserController extends BaseController {
 
+
+	/**
+	*
+	*/
+	public function __construct() {
+		# Make sure BaseController construct gets called
+		parent::__construct();
+		$this->beforeFilter('auth', array('except' => array('index', 'show')));
+	}
+
+
+
     /**
 	* Show the new user signup form
 	* @return View
@@ -22,6 +34,22 @@ class UserController extends BaseController {
 	public function getUserproject($id) {
 		$user = User::find($id);
 		return View::make('user-project',['user' => $user]);
+	}
+
+	// Process form to delete a project
+	public function deleteUserproject($uid,$pid) {
+
+		$user = Auth::user();
+		
+
+		try {
+	        $project = Project::findOrFail($pid);
+	    }
+	    catch(exception $e) {
+	        return Redirect::to('/user-project/{{ user->id }}')->with('flash_message', 'Could not delete project - not found.');
+	    }
+	    Project::destroy(Input::get($pid));
+	    return Redirect::to('/user-project/{{ user->id }}')->with('flash_message', 'Project deleted.');
 	}
 
 	/**
