@@ -28,6 +28,8 @@ Route::get('/user-dashboard/{id}', 'UserController@getUserdashboard');
 
 Route::get('/user-project/{id}', 'UserController@getUserproject');
 
+Route::delete('/user-project/{uid}/{pid}', 'UserController@deleteUserproject');
+
 Route::get('/user-admin', function() {
 
         $users = User::all();
