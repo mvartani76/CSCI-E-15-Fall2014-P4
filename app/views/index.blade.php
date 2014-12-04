@@ -20,14 +20,15 @@
 
 					{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Password', 'required'))}}
 					{{ Form::submit('Sign In', array('class'=>'btn btn-lg btn-primary btn-block'))}}
-                {{ Form::close() }}
-				</div>
-				<!-- Tried using laravel here but could not get the generated html to match -->
-                <label class="checkbox pull-left">
+                    <label class="checkbox pull-left">
                     <input type="hidden" name= "remember_me" value = "false">
                     <input type="checkbox" name = "remember_me" value= "true">
                     Remember me
                 </label>
+                {{ Form::close() }}
+				</div>
+				<!-- Tried using laravel here but could not get the generated html to match -->
+
                 <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
             </div>
             {{ link_to('/create-user', 'Create a New Account', array("class"=>"text-center new-account btn btn-warning")) }}
