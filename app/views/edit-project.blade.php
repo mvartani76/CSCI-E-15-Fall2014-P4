@@ -85,7 +85,7 @@
 						{{ Form::label('capex_percentage', 'Capex % of Sales') }}
 						<input name="capex_percentage" type="text" id="capex_percentage" value = "<?php $project->convert_to_percent($project->capex_percentage)?>" class = "pull-right"></br></br>
 
-						{{ Form::submit('Update Project', ['class' => 'btn btn-info']) }}
+						{{ Form::submit('Update Project', ['class' => 'btn btn-info col-lg-12']) }}
 
 					{{ Form::close() }}
 				</div>
@@ -93,10 +93,12 @@
 			<div class = "col-lg-4">
 				<div class = "well-password">
 					<h2 class = "text-info">Project Revenues</h2>
+					<div class = "DivWithScroll">
+					</div>
 				</div>
 			</div>
 			<div class = "col-lg-4">
-				<div class = "well-password">
+				<div class = "well-password DivWithScroll">
 					<h2 class = "text-info">Project Expenses</h2>
 				</div>
 			</div>
