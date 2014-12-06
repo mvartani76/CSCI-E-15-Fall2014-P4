@@ -45,6 +45,11 @@ Route::get('/edit-project/{uid}/{pid}', 'UserController@getEditproject');
 
 Route::post('/edit-project/{uid}/{pid}', 'UserController@postEditproject');
 
+Route::get('/create-comment/{id}', 'CommentController@getCreatecomment');
+
+Route::post('/create-comment/{id}', 'CommentController@postCreatecomment');
+
+
 Route::get('/practice-creating-user', function() {
 
     # Instantiate a new Book model class
