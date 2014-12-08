@@ -21,10 +21,11 @@
 					<div class="form-signin">
 						{{ Form::open(array('url' => '/create-comment/'.$user->id)) }}
 
-							{{ Form::select('Project', $project, Null, array('class' => 'form-control', 'required', 'autofocus'),'default') }}
-							{{ Form::select('User', array('' => 'Please Select Intended User') + User::lists('username'), Null, array('class' => 'form-control', 'placeholder' => 'User', 'required', 'autofocus')) }}
+							{{ Form::select('project', array('' => 'Please Select Project') + Project::lists('project_name'), Null, array('class' => 'form-control', 'required', 'autofocus'),'default') }}
+							{{ Form::select('intended_user', array('' => 'Please Select Intended User') + User::lists('username'), Null, array('class' => 'form-control', 'placeholder' => 'User', 'required', 'autofocus')) }}
 
-							{{ Form::textarea('Comment', Null, array('class' => 'my-form-control', 'placeholder' => 'Comment', 'required', 'autofocus')) }}</br></br>
+							{{ Form::text('comment_title', Null, array('class' => 'form-control', 'placeholder' => 'Comment Title', 'required', 'autofocus')) }}
+							{{ Form::textarea('comment_text', Null, array('class' => 'my-form-control', 'placeholder' => 'Comment Text', 'required', 'autofocus')) }}</br></br>
 							{{ Form::submit('Create Comment', array('class'=>'btn btn-lg btn-primary btn-block')) }}
 
 						{{ Form::close() }}
