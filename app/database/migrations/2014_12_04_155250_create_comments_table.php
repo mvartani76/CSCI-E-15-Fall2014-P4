@@ -20,7 +20,9 @@ class CreateCommentsTable extends Migration {
 			$table->increments('id');
 
 			# The rest of the fields...
-			$table->string('comment');
+			$table->string('comment_title');
+			$table->string('comment_text');
+			$table->integer('intended_user');
 
 			# This generates two columns: `created_at` and `updated_at` to
 			# keep track of changes to a row
