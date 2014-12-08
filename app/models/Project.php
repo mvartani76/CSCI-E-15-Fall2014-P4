@@ -24,6 +24,11 @@ class Project extends Eloquent implements UserInterface, RemindableInterface {
     	return $this->belongsToMany('User');
     }
 
+    public function comments()
+    {
+        return $this->belongsToMany('Comment');
+    }    
+
 	public function proforma() {
 		# Project may have many Proformas
         # Define a one-to-many relationship.
