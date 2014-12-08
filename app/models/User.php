@@ -34,10 +34,25 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     	return $this->belongsToMany('Project');
     }
 
+    public function comments()
+    {
+    	return $this->belongsToMany('Comment');
+    }
+
     public function countprojects()
     {
     	$i = 0;
 		foreach ($this['projects'] as $project)
+		{
+			$i = $i+1;
+		}
+		return $i;
+    }
+
+    public function countcomments()
+    {
+    	$i = 0;
+		foreach ($this['comments'] as $comment)
 		{
 			$i = $i+1;
 		}
