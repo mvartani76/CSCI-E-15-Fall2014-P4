@@ -49,6 +49,8 @@ Route::get('/create-comment/{id}', 'CommentController@getCreatecomment');
 
 Route::post('/create-comment/{id}', 'CommentController@postCreatecomment');
 
+Route::get('/user-comment/{id}', 'UserController@getUsercomment');
+
 
 Route::get('/practice-creating-user', function() {
 
