@@ -20,55 +20,53 @@ class CommentController extends BaseController {
 
 
 // Process form for a new project
-	public function postCreatecomment($uid) {
+	public function postCreatecomment() {
 
 		$user = Auth::user();
-		$project = Project::find($pid);
+		$comments = Comment::all();
+		
+		# needed to add an additional increment to get the correct project -- must be base 0 numbering?
+		$project = Project::Findorfail(Input::get('project')+1);
 
 		# Step 1) Define the rules
 		$rules = array(
-			'project_name' => 'required',
-			'start_year' => 'required',
-			'end_year' => 'required',
-			'tax_rate' => 'required',
-			'discount_rate' => 'required',
-			'terminal_rd' => 'required',
-			'terminal_sga' => 'required',
-			'terminal_growth_rate' => 'required',
-			'capex_percentage' => 'required'
+			'comment_title' => 'required',
+			'comment_text' => 'required',
+			'intended_user' => 'required'
 		);
 		# Step 2)
 		$validator = Validator::make(Input::all(), $rules);
 		# Step 3
 		if($validator->fails()) {
-			return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)
-				->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+			return Redirect::to('/create-comment/'.$user->id)
+				->with('flash_message', 'Create Comment failed; please fix the errors listed below.')
 				->with('flash_type', 'alert-danger')
 				->withInput()
 				->withErrors($validator);
 		}
     
-	    $project->project_name = Input::get('project_name');
-	    $project->project_description = Input::get('project_description');
-	    $project->start_year = Input::get('start_year');
-	    $project->end_year = Input::get('end_year');
-	    $project->tax_rate = Input::get('tax_rate');
-	    $project->discount_rate = Input::get('discount_rate');
-	    $project->terminal_rd = Input::get('terminal_rd');
-	    $project->terminal_sga = Input::get('terminal_sga');
-	    $project->terminal_growth_rate = Input::get('terminal_growth_rate');
-	    $project->capex_percentage = Input::get('capex_percentage');
-	    
+
+    	$comment = New Comment();
+	    $comment->comment_title = Input::get('comment_title');
+	    $comment->comment_text = Input::get('comment_text');
+	    # needed to add an additional increment to get the correct user -- must be base 0 numbering?
+	    $comment->intended_user = Input::get('intended_user')+1;
+
 	    try {
+			$comment->save();
+			$user->comments()->attach($comment->id);
+			$user->save();
+			$project->comments()->attach($comment->id);
 			$project->save();
+			
 		}
 		catch (Exception $e) {
-			return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)
+			return Redirect::to('/create-comment/'.$user->id)
 				->with('flash_message', 'Sign up failed; please try again.')
 				->with('flash_type', 'alert-danger')
 				->withInput();
 		}
 
-		return Redirect::to('/user-project/'.$user->id)->with('flash_message', 'Project Successfully Created!');
+		return Redirect::to('/user-comment/'.$user->id)->with('flash_message', 'Comment Created!');
 	}
 }
