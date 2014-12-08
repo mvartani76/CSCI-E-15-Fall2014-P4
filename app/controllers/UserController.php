@@ -36,6 +36,11 @@ class UserController extends BaseController {
 		return View::make('user-project',['user' => $user]);
 	}
 
+	public function getUsercomment($id) {
+		$user = User::find($id);
+		return View::make('user-comment',['user' => $user]);
+	}	
+
 	// Process form to delete a project
 	public function deleteUserproject($uid,$pid) {
 
@@ -149,10 +154,7 @@ class UserController extends BaseController {
 	    $project->terminal_sga = Input::get('terminal_sga');
 	    $project->terminal_growth_rate = Input::get('terminal_growth_rate');
 	    $project->capex_percentage = Input::get('capex_percentage');
-
-		#$project->users()->attach($user->id);
-		
-	    
+			    
 	    try {
 			$project->save();
 			$user->projects()->attach($project->id);
