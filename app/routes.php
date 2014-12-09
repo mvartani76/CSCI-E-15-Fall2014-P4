@@ -37,13 +37,13 @@ Route::get('/user-admin', function() {
     });
 
 
-Route::get('/create-project/{id}', 'UserController@getCreateproject');
+Route::get('/create-project/{id}', 'ProjectController@getCreateproject');
 
-Route::post('/create-project/{id}', ['before' => 'csrf', 'uses' => 'UserController@postCreateproject'] );
+Route::post('/create-project/{id}', ['before' => 'csrf', 'uses' => 'ProjectController@postCreateproject'] );
 
-Route::get('/edit-project/{uid}/{pid}', 'UserController@getEditproject');
+Route::get('/edit-project/{uid}/{pid}', 'ProjectController@getEditproject');
 
-Route::post('/edit-project/{uid}/{pid}', 'UserController@postEditproject');
+Route::post('/edit-project/{uid}/{pid}', 'ProjectController@postEditproject');
 
 Route::get('/create-comment/{id}', 'CommentController@getCreatecomment');
 
@@ -51,151 +51,6 @@ Route::post('/create-comment/{id}', 'CommentController@postCreatecomment');
 
 Route::get('/user-comment/{id}', 'UserController@getUsercomment');
 
-
-Route::get('/practice-creating-user', function() {
-
-    # Instantiate a new Book model class
-    $user = new User();
-
-    # Set 
-    $user->first_name = 'Mike';
-    $user->last_name = 'Vartanian';
-    $user->company_name = 'Contextual Lab Solutions';
-    $user->username = 'mvartani76';
-    $user->address_1 = '3341 Timberlake Drive';
-    $user->address_2 = '';
-    $user->city = 'Commerce Township';
-    $user->state = 'Michigan';
-    $user->zip_code = '48390';
-    $user->country = 'United States';
-    $user->email = 'mike.vartanian@gmail.com';
-    $user->mobile_phone = '+12482144561';
-    $user->password = 'mypassword';
-
-    # This is where the Eloquent ORM magic happens
-    $user->save();
-
-    return 'A new user has been added! Check your database to see...';
-
-});
-
-Route::get('/practice-reading-user', function() {
-
-    # The all() method will fetch all the rows from a Model/table
-    $users = User::all();
-
-    # Make sure we have results before trying to print them...
-    if($users->isEmpty() != TRUE) {
-
-        # Typically we'd pass $users to a View, but for quick and dirty demonstration, let's just output here...
-        foreach($users as $user) {
-            echo $user->username.'<br>';
-        }
-    }
-    else {
-        return 'No users found';
-    }
-
-});
-
-Route::get('/practice-reading-one-user', function() {
-
-    $user = User::where('permission_id', 'LIKE', '1')->first();
-
-    if($user) {
-        echo $user->username.'<br>';
-        echo $user->permission->p_view;
-    }
-    else {
-        return 'User not found.';
-    }
-
-});
-
-Route::get('/practice-updating-user', function() {
-
-    # First get a user to update
-    $user = User::where('username', 'LIKE', 'mvartani76')->first();
-
-    # If we found the user, update it
-    if($user) {
-
-        # Give it a different password
-        $user->password = 'mynewpasswd';
-
-        # Save the changes
-        $user->save();
-
-        return "Update complete; check the database to see if your update worked...";
-    }
-    else {
-        return "User not found, can't update.";
-    }
-
-});
-
-Route::get('/practice-deleting-user', function() {
-
-    # First get a user to delete
-    $user = User::where('username', 'LIKE', 'mvartani76')->first();
-
-    # If we found the user, delete it
-    if($user) {
-
-        # Goodbye!
-        $user->delete();
-
-        return "Deletion complete; check the database to see if it worked...";
-
-    }
-    else {
-        return "Can't delete - User not found.";
-    }
-
-});
-
-Route::get('/practice-creating-permission', function() {
-
-    # Instantiate a new Book model class
-    $permission = new Permission();
-
-    # Set 
-    $permission->permission_level = 'Admin';
-    $permission->p_view = TRUE;
-    $permission->p_add = TRUE;
-    $permission->p_update = TRUE;
-    $permission->p_delete = TRUE;
-    $permission->p_approve = TRUE;
-    $permission->p_customize = TRUE;
-
-    # This is where the Eloquent ORM magic happens
-    $permission->save();
-
-    return 'A new permission has been added! Check your database to see...';
-
-});
-
-Route::get('/create-permission', function() {
-    return View::make('create-permission');
-});
-// Process form for a new permission
-Route::post('/create-permission', array('before'=>'csrf',
-
-    function() {
-
-    $permission = new Permission();
-    $permission->permission_level = Input::get('permission_level');
-    $permission->p_view = Input::get('p_view');
-    $permission->p_add = Input::get('p_add');
-    $permission->p_update = Input::get('p_update');
-    $permission->p_delete = Input::get('p_delete');
-    $permission->p_approve = Input::get('p_approve');
-    $permission->p_customize = Input::get('p_customize');
-    
-    $permission->save();
-    return 'Your permission was created';
-
-}));
 
 Route::get('/debug', function() {
 
