@@ -36,19 +36,13 @@ Route::get('/user-admin', function() {
         return View::make('user-admin',['users' => $users]);
     });
 
-
+/* Project Related Routes */
 Route::get('/create-project/{id}', 'ProjectController@getCreateproject');
-
 Route::post('/create-project/{id}', ['before' => 'csrf', 'uses' => 'ProjectController@postCreateproject'] );
-
 Route::get('/edit-project/{uid}/{pid}', 'ProjectController@getEditproject');
-
 Route::post('/edit-project/{uid}/{pid}', 'ProjectController@postEditproject');
-
 Route::get('/create-comment/{id}', 'CommentController@getCreatecomment');
-
 Route::post('/create-comment/{id}', 'CommentController@postCreatecomment');
-
 Route::get('/user-comment/{id}', 'UserController@getUsercomment');
 
 
