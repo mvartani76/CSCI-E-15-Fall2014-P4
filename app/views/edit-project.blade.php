@@ -68,13 +68,13 @@
 
 
 						{{ Form::label('tax_rate', 'Project Tax Rate') }}
-						<input name="tax_rate" type="text" id="tax_rate" value = "<?php echo $project->tax_rate?>" class = "pull-right"></br></br>
+						<input name="tax_rate" type="text" id="tax_rate" value = "<?php $project->convert_to_percent($project->tax_rate) ?>" class = "pull-right"></br></br>
 
 						{{ Form::label('discount_rate', 'Project Discount Rate') }}
 						<input name="discount_rate" type="text" id="discount_rate" value = "<?php $project->convert_to_percent($project->discount_rate)?>" class = "pull-right"></br></br>
 
 						{{ Form::label('terminal_growth_rate', 'Terminal Growth Rate') }}
-						<input name="terminal_growth_rate" type="text" id="terminal_growth_rate" value = "<?php $project->convert_to_percent($project->terminal_gr_rate)?>" class = "pull-right"></br></br>
+						<input name="terminal_growth_rate" type="text" id="terminal_growth_rate" value = "<?php $project->convert_to_percent($project->terminal_growth_rate)?>" class = "pull-right"></br></br>
 
 						{{ Form::label('terminal_rd', 'Terminal R&D Expense % of Sales') }}
 						<input name="terminal_rd" type="text" id="terminal_rd" value = "<?php $project->convert_to_percent($project->terminal_rd)?>" class = "pull-right"></br></br>
