@@ -29,6 +29,7 @@
                                 <tr>
                                     <th>Comment Title</th>
                                     <th>Comment Text</th>
+                                    <th>Associated Project</th>
                                     <th>Date/Time Created</th>
                                     <th></th>
                                 </tr>
@@ -40,6 +41,12 @@
                                 <tr>
                                     <td>{{ $comment->comment_title }}</td>
                                     <td>{{ $comment->comment_text }}</td>
+                                    <!-- Show the associated project name -->
+                                    <!-- Do not understand why I need the foreach to access project_name but this is all that worked? -->
+                                    <!-- It worked with multiple projects assigned to a given user so I am sticking with it for now -->
+                                    <?php foreach($comment['projects'] as $project): ?>
+                                        <td><?php echo $project->project_name; ?></td>
+                                    <?php endforeach ?>
                                     <td>{{ $comment->created_at->format('F d, Y h:ia') }}</td>
                                     <td>
                                         <a href="/edit-comment/{{ $user->id }}/{{ $comment->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
@@ -60,6 +67,7 @@
                                 <tr>
                                     <th>Comment Title</th>
                                     <th>Comment Text</th>
+                                    <th>Associated Project</th>
                                     <th>Date/Time Created</th>
                                     <th></th>
                                 </tr>
@@ -71,6 +79,9 @@
                                 <tr>
                                     <td>{{ $comment->comment_title }}</td>
                                     <td>{{ $comment->comment_text }}</td>
+                                    <?php foreach($comment['projects'] as $project): ?>
+                                        <td><?php echo $project->project_name; ?></td>
+                                    <?php endforeach ?>                                    
                                     <td>{{ $comment->created_at->format('F d, Y h:ia') }}</td>
                                     <td>
                                         <a href="/edit-comment/{{ $user->id }}/{{ $comment->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
