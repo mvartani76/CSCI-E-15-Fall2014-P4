@@ -44,7 +44,7 @@ Route::post('/edit-project/{uid}/{pid}', 'ProjectController@postEditproject');
 Route::get('/create-comment/{id}', 'CommentController@getCreatecomment');
 Route::post('/create-comment/{id}', 'CommentController@postCreatecomment');
 Route::get('/user-comment/{id}', 'UserController@getUsercomment');
-
+Route::delete('/user-comment/{uid}/{cid}', 'CommentController@deletecomment');
 
 Route::get('/debug', function() {
 
