@@ -21,8 +21,8 @@
                       
                 <div class="container-fluid">
                  
-                    <h1><i class="fa fa-users"></i> User Comments Assigned to {{ $user->username }} <a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h1>
-
+                    <h1><i class="fa fa-users"></i> User Comments Assigned to: <i class= "text-info"> {{ $user->username }}</i>
+                        <a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h1>
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead>
@@ -54,13 +54,24 @@
                                         {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         {{ Form::close() }}
                                     </td>
-                                </tr>
+                                </tr>/
                             <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
 
-                    <h1><i class="fa fa-users"></i> User Comments From {{ $user->username }} <a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h1>
+                    <h1><i class="fa fa-users"></i> User Comments From: <i class= "text-info"> {{ $user->username }} </i>
+                            @if ( Session::has('flash_message') )            
+                                <div class= "alert error-alert text-danger {{ Session::get('flash_type') }}">
+                                    {{ Session::get('flash_message') }}
+                                </div>      
+                            @endif
+
+                            @foreach($errors->all() as $message)
+                                <div>{{ $message }}</div>
+                            @endforeach
+                            <a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h1>
+                    
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead>
@@ -96,18 +107,6 @@
                     </div>
                  
                     <a href="/create-comment/{{ $user->id }}" class="btn btn-success">New Comment</a>
-                 
-                @if ( Session::has('flash_message') )            
-                  <div class= "alert {{ Session::get('flash_type') }}">
-                      <h3>{{ Session::get('flash_message') }}</h3>
-                  </div>              
-                @endif
-
-                @foreach($errors->all() as $message)
-                    <div>{{ $message }}</div>
-                @endforeach
-
-
                 </div>
                 
     <script type="text/javascript" src="/js/jquery.js"></script>
