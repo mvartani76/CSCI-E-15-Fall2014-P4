@@ -1,4 +1,4 @@
-
+ 
 		@extends('master')
         
         @section('title') Projects @stop
@@ -20,7 +20,17 @@
                       
                 <div class="container-fluid">
                  
-                    <h1><i class="fa fa-users"></i> {{ $user->username }} User Projects <a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h1>
+                    <h2><i class="fa fa-users"></i> {{ $user->username }} User Projects
+                            @if ( Session::has('flash_message') )            
+                            <div class= "alert error-alert text-danger  {{ Session::get('flash_type') }}">
+                                {{ Session::get('flash_message') }}
+                            </div>              
+                            @endif
+
+                            @foreach($errors->all() as $message)
+                                <div>{{ $message }}</div>
+                            @endforeach
+                            <a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h2>
                  
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
@@ -55,18 +65,6 @@
                     </div>
                  
                     <a href="/create-project/{{ $user->id }}" class="btn btn-success">New Project</a>
-                 
-                @if ( Session::has('flash_message') )            
-                  <div class= "alert {{ Session::get('flash_type') }}">
-                      <h3>{{ Session::get('flash_message') }}</h3>
-                  </div>              
-                @endif
-
-                @foreach($errors->all() as $message)
-                    <div>{{ $message }}</div>
-                @endforeach
-
-
                 </div>
                 
     <script type="text/javascript" src="/js/jquery.js"></script>
