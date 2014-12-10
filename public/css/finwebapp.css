@@ -89,3 +89,8 @@
     overflow:scroll;
     overflow-x:hidden;
 }
+
+.error-alert
+{
+    display:inline;
+}
