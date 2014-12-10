@@ -69,4 +69,27 @@ class CommentController extends BaseController {
 
 		return Redirect::to('/user-comment/'.$user->id)->with('flash_message', 'Comment Created!');
 	}
+
+	// Process form to delete a comment
+	public function deleteComment($uid,$cid) {
+
+		$user = Auth::user();
+		echo $cid;
+		
+		try {
+	        $comment = Comment::findOrFail($cid);
+
+	    }
+	    catch(exception $e) {
+	        return Redirect::to('/user-comment/{{ user->id }}')->with('flash_message', 'Could not delete comment '. $cid .' - not found.')
+	        													->withInput();
+	    }
+
+	    Comment::destroy($cid);
+		return Redirect::to('/user-comment/{{ user->id }}')->with('flash_message', 'Comment deleted.');
+	    
+	}
+
+
+
 }
