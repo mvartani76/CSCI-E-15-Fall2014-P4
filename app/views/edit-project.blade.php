@@ -19,7 +19,7 @@
 		<div class="container-fluid">
 			<h1>Edit Project <a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h1>
 			<div class = "col-lg-4">
-				<div class = "well-password">
+				<div class = "well-password-big">
 					<h2 class = "text-info">Project Parameters</h2>
 					{{ Form::open(array('url' => '/edit-project/'.$user->id.'/'.$project->id)) }}
 
@@ -77,28 +77,28 @@
 						<input name="terminal_growth_rate" type="text" id="terminal_growth_rate" value = "<?php $project->convert_to_percent($project->terminal_growth_rate)?>" class = "pull-right"></br></br>
 
 						{{ Form::label('terminal_rd', 'Terminal R&D Expense % of Sales') }}
-						<input name="terminal_rd" type="text" id="terminal_rd" value = "<?php $project->convert_to_percent($project->terminal_rd)?>" class = "pull-right"></br></br>
+						<input name="terminal_rd" type="text" id="terminal_rd" style="width: 75px" value = "<?php $project->convert_to_percent($project->terminal_rd)?>" class = "pull-right"></br></br>
 
 						{{ Form::label('terminal_sga', 'Terminal SG&A Expense % of Sales') }}
-						<input name="terminal_sga" type="text" id="terminal_sga" value = "<?php $project->convert_to_percent($project->terminal_sga)?>" class = "pull-right"></br></br>
+						<input name="terminal_sga" type="text" id="terminal_sga" style="width: 75px" value = "<?php $project->convert_to_percent($project->terminal_sga)?>" class = "pull-right"></br></br>
 
 						{{ Form::label('capex_percentage', 'Capex % of Sales') }}
 						<input name="capex_percentage" type="text" id="capex_percentage" value = "<?php $project->convert_to_percent($project->capex_percentage)?>" class = "pull-right"></br></br>
-
+						</br>
 						{{ Form::submit('Update Project', ['class' => 'btn btn-info col-lg-12']) }}
 
 					{{ Form::close() }}
 				</div>
 			</div>
 			<div class = "col-lg-4">
-				<div class = "well-password">
+				<div class = "well-password-big">
 					<h2 class = "text-info">Project Revenues</h2>
 					<div class = "DivWithScroll">
 					</div>
 				</div>
 			</div>
 			<div class = "col-lg-4">
-				<div class = "well-password DivWithScroll">
+				<div class = "well-password-big DivWithScroll">
 					<h2 class = "text-info">Project Expenses</h2>
 				</div>
 			</div>
