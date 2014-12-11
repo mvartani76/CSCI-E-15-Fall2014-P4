@@ -20,7 +20,7 @@
                       
                 <div class="container-fluid">
                  
-                    <h2><i class="fa fa-users"></i> {{ $user->username }} User Projects
+                    <h2><i class="fa fa-users"></i> <i class= "text-info">{{ $user->username }}</i> User Projects
                             @if ( Session::has('flash_message') )            
                             <div class= "alert error-alert text-danger  {{ Session::get('flash_type') }}">
                                 {{ Session::get('flash_message') }}
@@ -36,11 +36,11 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Project Name</th>
-                                    <th>Project Description</th>
-                                    <th>Date/Time Created</th>
-                                    <th>Date/Time Last Modified</th>
-                                    <th></th>
+                                    <th class="tablecell-size1">Project Name</th>
+                                    <th class="tablecell-size6">Project Description</th>
+                                    <th class="tablecell-size5">Date/Time Created</th>
+                                    <th class="tablecell-size5">Date/Time Last Modified</th>
+                                    <th>Edit/Delete</th>
                                 </tr>
                             </thead>
                  
@@ -48,10 +48,10 @@
                                 <!-- List the projects that the current user is assigned to -->
                                 @foreach($user['projects'] as $project)
                                 <tr>
-                                    <td>{{ $project->project_name }}</td>
-                                    <td>{{ $project->project_description }}</td>
-                                    <td>{{ $project->created_at->format('F d, Y h:ia') }}</td>
-                                    <td>{{ $project->updated_at->format('F d, Y h:ia') }}</td>
+                                    <td class="tablecell-size1">{{ $project->project_name }}</td>
+                                    <td class="tablecell-size6">{{ $project->project_description }}</td>
+                                    <td class="tablecell-size5">{{ $project->created_at->format('F d, Y h:ia') }}</td>
+                                    <td class="tablecell-size5">{{ $project->updated_at->format('F d, Y h:ia') }}</td>
                                     <td>
                                         <a href="/edit-project/{{ $user->id }}/{{ $project->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
                                         {{ Form::open(['url' => '/user-project/' .$user->id . '/' . $project->id, 'method' => 'DELETE']) }}

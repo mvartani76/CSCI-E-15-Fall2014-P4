@@ -27,11 +27,11 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Comment Title</th>
-                                    <th>Comment Text</th>
-                                    <th>Associated Project</th>
+                                    <th class="tablecell-size1">Comment Title</th>
+                                    <th class="tablecell-size2">Comment Text</th>
+                                    <th class="tablecell-size3">Associated Project</th>
                                     <th>Date/Time Created</th>
-                                    <th></th>
+                                    <th>Edit/Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,15 +39,15 @@
                                 <?php foreach($comments as $comment): ?>
                                 <?php if ($comment->intended_user != $user->id) continue; ?>
                                 <tr>
-                                    <td>{{ $comment->comment_title }}</td>
-                                    <td>{{ $comment->comment_text }}</td>
+                                    <td class="tablecell-size1">{{ $comment->comment_title }}</td>
+                                    <td class="tablecell-size2">{{ $comment->comment_text }}</td>
                                     <!-- Show the associated project name -->
                                     <!-- Do not understand why I need the foreach to access project_name but this is all that worked? -->
                                     <!-- It worked with multiple projects assigned to a given user so I am sticking with it for now -->
                                     <?php foreach($comment['projects'] as $project): ?>
-                                        <td><?php echo $project->project_name; ?></td>
+                                        <td class="tablecell-size3"><?php echo $project->project_name; ?></td>
                                     <?php endforeach ?>
-                                    <td>{{ $comment->created_at->format('F d, Y h:ia') }}</td>
+                                    <td class="tablecell-size4">{{ $comment->created_at->format('F d, Y h:ia') }}</td>
                                     <td>
                                         <a href="/edit-comment/{{ $user->id }}/{{ $comment->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
                                         {{ Form::open(['url' => '/user-comment/' .$user->id . '/' . $comment->id, 'method' => 'DELETE']) }}
@@ -76,11 +76,11 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Comment Title</th>
-                                    <th>Comment Text</th>
-                                    <th>Associated Project</th>
-                                    <th>Date/Time Created</th>
-                                    <th></th>
+                                    <th class="tablecell-size1">Comment Title</th>
+                                    <th class="tablecell-size2">Comment Text</th>
+                                    <th class="tablecell-size3">Associated Project</th>
+                                    <th class="tablecell-size4">Date/Time Created</th>
+                                    <th>Edit/Delete</th>
                                 </tr>
                             </thead>
                  
@@ -88,12 +88,12 @@
                                 <!-- List the comments that the current user is assigned to -->
                                 @foreach($user['comments'] as $comment)
                                 <tr>
-                                    <td>{{ $comment->comment_title }}</td>
-                                    <td>{{ $comment->comment_text }}</td>
+                                    <td class="tablecell-size1">{{ $comment->comment_title }}</td>
+                                    <td class="tablecell-size2">{{ $comment->comment_text }}</td>
                                     <?php foreach($comment['projects'] as $project): ?>
-                                        <td><?php echo $project->project_name; ?></td>
+                                        <td class="tablecell-size3"><?php echo $project->project_name; ?></td>
                                     <?php endforeach ?>                                    
-                                    <td>{{ $comment->created_at->format('F d, Y h:ia') }}</td>
+                                    <td class="tablecell-size4">{{ $comment->created_at->format('F d, Y h:ia') }}</td>
                                     <td>
                                         <a href="/edit-comment/{{ $user->id }}/{{ $comment->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
                                         {{ Form::open(['url' => '/user-comment/' .$user->id . '/' . $comment->id, 'method' => 'DELETE']) }}

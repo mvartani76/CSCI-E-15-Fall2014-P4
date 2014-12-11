@@ -85,6 +85,17 @@
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
+.well-password-big {
+  min-height: 600px;
+  min-width: 300px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #1c1e22;
+  border: 1px solid #0c0d0e;
+  border-radius: 4px; 
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
 .DivWithScroll{
     overflow:scroll;
     overflow-x:hidden;
@@ -93,4 +104,28 @@
 .error-alert
 {
     display:inline;
+}
+.tablecell-size1
+{
+    width:250px;
+}
+.tablecell-size2
+{
+    width:500px;
+}
+.tablecell-size3
+{
+    width:150px;
+}
+.tablecell-size4
+{
+    width:250px;
+}
+.tablecell-size5
+{
+    width:225px;
+}
+.tablecell-size6
+{
+    width:450px;
 }
