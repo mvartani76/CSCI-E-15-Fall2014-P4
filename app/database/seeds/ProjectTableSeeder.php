@@ -9,8 +9,8 @@ class ProjectTableSeeder extends Seeder {
 	    $project1 = new Project();
 		$project1->project_name = 'Project 1';
 		$project1->project_description = 'Project 1 Description';
-		$project1->start_year = 2001;
-		$project1->end_year = 2005;
+		$project1->start_year = 2014;
+		$project1->end_year = 2018;
 		$project1->tax_rate = 0.21;
 		$project1->discount_rate = 0.111;
 		$project1->terminal_growth_rate = 0.01;
@@ -22,8 +22,8 @@ class ProjectTableSeeder extends Seeder {
 		$project2 = new Project();
 		$project2->project_name = 'Project 2';
 		$project2->project_description = 'Project 2 Description';
-		$project2->start_year = 2002;
-		$project2->end_year = 2006;
+		$project2->start_year = 2015;
+		$project2->end_year = 2019;
 		$project2->tax_rate = 0.22;
 		$project2->discount_rate = 0.112;
 		$project2->terminal_growth_rate = 0.02;
@@ -35,8 +35,8 @@ class ProjectTableSeeder extends Seeder {
 		$project3 = new Project();
 		$project3->project_name = 'Project 3';
 		$project3->project_description = 'Project 3 Description';
-		$project3->start_year = 2003;
-		$project3->end_year = 2007;
+		$project3->start_year = 2016;
+		$project3->end_year = 2020;
 		$project3->tax_rate = 0.23;
 		$project3->discount_rate = 0.113;
 		$project3->terminal_growth_rate = 0.03;
@@ -48,8 +48,8 @@ class ProjectTableSeeder extends Seeder {
 		$project4 = new Project();
 		$project4->project_name = 'Project 4';
 		$project4->project_description = 'Project 4 Description';
-		$project4->start_year = 2004;
-		$project4->end_year = 2008;
+		$project4->start_year = 2017;
+		$project4->end_year = 2021;
 		$project4->tax_rate = 0.24;
 		$project4->discount_rate = 0.114;
 		$project4->terminal_growth_rate = 0.04;
@@ -61,8 +61,8 @@ class ProjectTableSeeder extends Seeder {
 		$project5 = new Project();
 		$project5->project_name = 'Project 5';
 		$project5->project_description = 'Project 5 Description';
-		$project5->start_year = 2005;
-		$project5->end_year = 2009;
+		$project5->start_year = 2018;
+		$project5->end_year = 2022;
 		$project5->tax_rate = 0.25;
 		$project5->discount_rate = 0.115;
 		$project5->terminal_growth_rate = 0.05;
