@@ -41,10 +41,16 @@ Route::get('/create-project/{id}', 'ProjectController@getCreateproject');
 Route::post('/create-project/{id}', ['before' => 'csrf', 'uses' => 'ProjectController@postCreateproject'] );
 Route::get('/edit-project/{uid}/{pid}', 'ProjectController@getEditproject');
 Route::post('/edit-project/{uid}/{pid}', 'ProjectController@postEditproject');
+Route::get('/add-revenue/{id}', 'ProjectController@getAddrevenue');
+Route::post('/add-revenue/{id}', 'ProjectController@postAddrevenue');
+Route::delete('/user-revenue/{uid}/{rid}', 'ProjectController@deleterevenue');
+
+/* Comment Related Routes */
 Route::get('/create-comment/{id}', 'CommentController@getCreatecomment');
 Route::post('/create-comment/{id}', 'CommentController@postCreatecomment');
 Route::get('/user-comment/{id}', 'UserController@getUsercomment');
 Route::delete('/user-comment/{uid}/{cid}', 'CommentController@deletecomment');
+
 
 Route::get('/debug', function() {
 
