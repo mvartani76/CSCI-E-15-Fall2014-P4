@@ -19,16 +19,9 @@ class CreateRevenuesTable extends Migration {
 			# Most tables start off this way
 			$table->increments('id');
 
-			$table->string('revenue_description');
-		
-			$table->integer('revenue_type_id')->unsigned();
-			$table->integer('proforma_id')->unsigned();
+			$table->string('revenue_description');		
 			$table->decimal('amount');
-
-			# Define Foreign Keys
-			$table->foreign('revenue_type_id')->references('id')->on('revenue_types');
-			$table->foreign('proforma_id')->references('id')->on('proformas');
-						
+			$table->integer('year')->unsigned();
 
 			# This generates two columns: `created_at` and `updated_at` to
 			# keep track of changes to a row

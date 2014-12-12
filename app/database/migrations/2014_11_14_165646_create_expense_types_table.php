@@ -20,7 +20,7 @@ class CreateExpenseTypesTable extends Migration {
 			$table->increments('id');
 
 			$table->string('expense_type');
-			$table->string('expense_description');
+			$table->string('expense_type_description');
 
 			# This generates two columns: `created_at` and `updated_at` to
 			# keep track of changes to a row
