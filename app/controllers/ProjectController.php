@@ -130,4 +130,51 @@ class ProjectController extends BaseController {
 
 		return Redirect::to('/user-project/'.$user->id)->with('flash_message', 'Project Successfully Updated!');
 	}
+
+	public function getAddrevenue($id) {
+		$user = User::find($id);
+		return View::make('add-revenue',['user' => $user]);
+	}
+
+	// Process form for a new revenue
+	public function postAddrevenue($uid) {
+
+		$user = Auth::user();
+		# Step 1) Define the rules
+		$rules = array(
+			'revenue_description' => 'required',
+			'revenuetype' => 'required',
+			'amount' => 'required'
+		);
+		# Step 2)
+		$validator = Validator::make(Input::all(), $rules);
+		# Step 3
+		if($validator->fails()) {
+			return Redirect::to('/add-revenue/{id}')
+				->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+				->with('flash_type', 'alert-danger')
+				->withInput()
+				->withErrors($validator);
+		}
+    
+	    $revenue = new Revenue();
+	    $project->project_name = Input::get('project_name');
+	    $project->project_description = Input::get('project_description');
+	    $project->start_year = Input::get('start_year');
+			    
+	    try {
+			$revenue->save();
+			$project->revenues()->attach($revenue->id);
+			$project->save();
+		}
+		catch (Exception $e) {
+			return Redirect::to('/create-project/{id}')
+				->with('flash_message', 'Sign up failed; please try again.')
+				->with('flash_type', 'alert-danger')
+				->withInput();
+		}
+
+		return Redirect::to('/user-project/{id}')->with('flash_message', 'Project Successfully Created!');		
+	}
+
 }
