@@ -16,10 +16,10 @@ class Revenue_type extends Eloquent implements UserInterface, RemindableInterfac
 	 */
 	protected $table = 'revenue_types';
 
-	public function user() {
+	public function revenues() {
 		# Revenue_type has many Revenues
-        # Define a one-to-many relationship.
-        return $this->hasMany('Revenue');
+        # Define a many-to-many relationship.
+        return $this->belongsToMany('Revenue');
     }
 
 }

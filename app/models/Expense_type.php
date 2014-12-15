@@ -16,10 +16,10 @@ class Expense_type extends Eloquent implements UserInterface, RemindableInterfac
 	 */
 	protected $table = 'expense_types';
 
-	public function expense_type() {
+	public function expenses() {
 		# Expense_type has many Expenses
-        # Define a one-to-many relationship.
-        return $this->hasMany('Expense');
+        # Define a many-to-many relationship.
+        return $this->belongsToMany('Expense');
     }
 
 }

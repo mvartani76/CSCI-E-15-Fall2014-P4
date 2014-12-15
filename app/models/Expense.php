@@ -22,10 +22,18 @@ class Expense extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 
-	public function expense() {
-		# Expense belongs to Proforma
-		# Define an inverse one-to-many relationship.
-		return $this->belongsToMany('Proforma');
+	public function expensetypes() {
+		# Define a many-to-many relationship.
+		return $this->belongsToMany('Expense_type');
+    }
+    public function projects() {
+		# Define a many-to-many relationship.
+		return $this->belongsToMany('Project');
+	}
+
+	public function users() {
+		# Define a many-to-many relationship.
+		return $this->belongsToMany('User');
     }
 
 }

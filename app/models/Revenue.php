@@ -22,10 +22,18 @@ class Revenue extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 
-	public function revenue() {
-		# Revenue belongs to Proforma
-		# Define an inverse one-to-many relationship.
-		return $this->belongsToMany('Proforma');
+	public function revenuetypes() {
+		# Define a many-to-many relationship.
+		return $this->belongsToMany('Revenue_type');
+	}
+	public function projects() {
+		# Define a many-to-many relationship.
+		return $this->belongsToMany('Project');
+	}
+
+	public function users() {
+	# Define a many-to-many relationship.
+	return $this->belongsToMany('User');
     }
 
 }
