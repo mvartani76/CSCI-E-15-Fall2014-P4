@@ -1,5 +1,3 @@
-<html>
-	<body>
 		@extends('master')
 
 		@section('content')
@@ -79,5 +77,3 @@
 			</div>
 		</div>
 		@stop
-	</body>
-</html>
