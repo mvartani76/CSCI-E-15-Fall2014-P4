@@ -131,50 +131,58 @@ class ProjectController extends BaseController {
 		return Redirect::to('/user-project/'.$user->id)->with('flash_message', 'Project Successfully Updated!');
 	}
 
-	public function getAddrevenue($id) {
-		$user = User::find($id);
-		return View::make('add-revenue',['user' => $user]);
+	public function getAddrevenue($uid,$pid) {
+		$project = Project::find($pid);
+		$user = Auth::user();
+		return View::make('/add-revenue',['user' => $user],['project' => $project])->withOnly('project');
 	}
 
 	// Process form for a new revenue
-	public function postAddrevenue($uid) {
+	public function postAddrevenue($uid, $pid) {
 
 		$user = Auth::user();
+		$project = Project::find($pid);
+
 		# Step 1) Define the rules
 		$rules = array(
 			'revenue_description' => 'required',
 			'revenuetype' => 'required',
-			'amount' => 'required'
+			'amount' => 'required',
+			'year' => 'required'
 		);
 		# Step 2)
 		$validator = Validator::make(Input::all(), $rules);
 		# Step 3
 		if($validator->fails()) {
-			return Redirect::to('/add-revenue/{id}')
-				->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+			return Redirect::to('/add-revenue/'.$user->id.'/'.$project->id)
+				->with('flash_message', 'Add revenue failed; please fix the errors listed below.')
 				->with('flash_type', 'alert-danger')
 				->withInput()
 				->withErrors($validator);
 		}
     
 	    $revenue = new Revenue();
-	    $project->project_name = Input::get('project_name');
-	    $project->project_description = Input::get('project_description');
-	    $project->start_year = Input::get('start_year');
-			    
+	    $revenue->revenue_description = Input::get('revenue_description');
+	    $revenue->amount = Input::get('amount');
+	    $revenue->year = Input::get('year');
+	    # Need to add 1 to revenue type as result is base 0
+		$revenue2 = Input::get('revenuetype')+1;
+		echo $revenue2;	    
 	    try {
+	    	$revenue->save();
+			$revenue->revenuetypes()->attach($revenue2);
 			$revenue->save();
 			$project->revenues()->attach($revenue->id);
 			$project->save();
 		}
 		catch (Exception $e) {
-			return Redirect::to('/create-project/{id}')
-				->with('flash_message', 'Sign up failed; please try again.')
+			return Redirect::to('/add-revenue/'.$user->id.'/'.$project->id.'/'.$revenue->id)
+				->with('flash_message', 'Add Revenue failed; please try again.')
 				->with('flash_type', 'alert-danger')
 				->withInput();
 		}
 
-		return Redirect::to('/user-project/{id}')->with('flash_message', 'Project Successfully Created!');		
+		return Redirect::to('/add-revenue/'.$user->id.'/'.$project->id)->with('flash_message', 'Revenue added Successfully!');		
 	}
 
 }
