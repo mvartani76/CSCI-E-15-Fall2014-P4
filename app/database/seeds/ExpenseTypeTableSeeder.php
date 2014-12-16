@@ -6,29 +6,29 @@ class ExpenseTypeTableSeeder extends Seeder {
 		DB::statement('TRUNCATE expense_types');
 
 		# Expense_types
-	    $expense_type1 = new Expense_type();
-		$expense_type1->expense_type = 'COGS';
-		$expense_type1->expense_type_description = 'Cost of the products purchased or manufactured and sold by a business';
-		$expense_type1->save();
+	    $expensetype1 = new Expense_type();
+		$expensetype1->expensetype = 'COGS';
+		$expensetype1->expense_type_description = 'Cost of the products purchased or manufactured and sold by a business';
+		$expensetype1->save();
 
-		$expense_type2 = new Expense_type();
-		$expense_type2->expense_type = 'Selling Expense';
-		$expense_type2->expense_type_description = 'Expenses incurred and related to making sales';
-		$expense_type2->save();
+		$expensetype2 = new Expense_type();
+		$expensetype2->expensetype = 'Selling Expense';
+		$expensetype2->expense_type_description = 'Expenses incurred and related to making sales';
+		$expensetype2->save();
 
-		$expense_type3 = new Expense_type();
-		$expense_type3->expense_type = 'Salary Expense';
-		$expense_type3->expense_type_description = 'Salary expense includes incentives, commissions, bonuses, and severance pay';
-		$expense_type3->save();
+		$expensetype3 = new Expense_type();
+		$expensetype3->expensetype = 'Salary Expense';
+		$expensetype3->expense_type_description = 'Salary expense includes incentives, commissions, bonuses, and severance pay';
+		$expensetype3->save();
 
-		$expense_type4 = new Expense_type();
-		$expense_type4->expense_type = 'Travel Expense';
-		$expense_type4->expense_type_description = 'Includes local and overnight travel';
-		$expense_type4->save();
+		$expensetype4 = new Expense_type();
+		$expensetype4->expensetype = 'Travel Expense';
+		$expensetype4->expense_type_description = 'Includes local and overnight travel';
+		$expensetype4->save();
 
-		$expense_type5 = new Expense_type();
-		$expense_type5->expense_type = 'Rent Expense';
-		$expense_type5->expense_type_description = 'Includes land, buildings, equipment, vehicles, other';
-		$expense_type5->save();
+		$expensetype5 = new Expense_type();
+		$expensetype5->expensetype = 'Rent Expense';
+		$expensetype5->expense_type_description = 'Includes land, buildings, equipment, vehicles, other';
+		$expensetype5->save();
 	}
 }
