@@ -94,14 +94,95 @@
 				<div class = "well-password-big">
 					<h2 class = "text-info">Project Revenues</h2>
 					<div class = "DivWithScroll">
+	                    <div class="table-responsive">
+	                        <table class="table table-bordered table-striped">
+	                            <thead>
+	                                <tr>
+	                                    <th class="tablecell-size1">Revenue Type</th>
+	                                    <th class="tablecell-size6">Revenue Description</th>
+	                                    <th class="tablecell-size6">Amount</th>
+	                                    <th class="tablecell-size6">Year</th>
+	                                    <th class="tablecell-size5">Date/Time Last Modified</th>
+	                                    <th>Edit/Delete</th>
+	                                </tr>
+	                            </thead>
+	                 
+	                            <tbody>
+	                                <!-- List the projects that the current user is assigned to -->
+	                                @foreach($project['revenues'] as $revenue)
+	                                <tr>
+                                    <!-- Show the associated Revenue Type -->
+                                    <!-- Do not understand why I need the foreach to access project_name but this is all that worked? -->
+                                    <!-- It worked with multiple projects assigned to a given user so I am sticking with it for now -->
+                                    <?php foreach($revenue['revenue_types'] as $revenue2): ?>
+                                        <td class="tablecell-size3"><?php echo $revenue2->revenuetype; ?></td>
+                                    <?php endforeach ?>
+	                                    <td class="tablecell-size3">{{ $revenue->revenue_description }}</td>
+										<td class="tablecell-size3">{{ $revenue->amount }}</td>
+										<td class="tablecell-size3">{{ $revenue->year }}</td>
+	                                    <td class="tablecell-size3">{{ $revenue->updated_at->format('F d, Y h:ia') }}</td>
+	                                    <td>
+	                                        <a href="/edit-project/{{ $user->id }}/{{ $project->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+	                                        {{ Form::open(['url' => '/user-project/' .$user->id . '/' . $project->id, 'method' => 'DELETE']) }}
+	                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+	                                        {{ Form::close() }}
+	                                    </td>
+	                                </tr>
+	                                @endforeach
+	                            </tbody>
+	                        </table>
+	                    </div>
 					</div>
-
-					<a href="/add-revenue/{{ $user->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Add Revenue</a>
+					</br>
+					<a href="/add-revenue/{{ $user->id }}/{{ $project->id }}" class="btn btn-info btn-align-bottom col-lg-12" style="margin-right: 3px;">Add Revenue</a>
 				</div>
 			</div>
 			<div class = "col-lg-4">
-				<div class = "well-password-big DivWithScroll">
+				<div class = "well-password-big">
 					<h2 class = "text-info">Project Expenses</h2>
+					<div class = "DivWithScroll">
+	                    <div class="table-responsive">
+	                        <table class="table table-bordered table-striped">
+	                            <thead>
+	                                <tr>
+	                                    <th class="tablecell-size1">Expense Type</th>
+	                                    <th class="tablecell-size6">Expense Description</th>
+	                                    <th class="tablecell-size6">Amount</th>
+	                                    <th class="tablecell-size6">Year</th>
+	                                    <th class="tablecell-size5">Date/Time Last Modified</th>
+	                                    <th>Edit/Delete</th>
+	                                </tr>
+	                            </thead>
+	                 
+	                            <tbody>
+	                                <!-- List the projects that the current user is assigned to -->
+	                                @foreach($project['expenses'] as $expense)
+	                                <tr>
+				                    <!-- Show the associated Expense Type -->
+                                    <!-- Do not understand why I need the foreach to access project_name but this is all that worked? -->
+                                    <!-- It worked with multiple projects assigned to a given user so I am sticking with it for now -->
+                                    <?php foreach($expense['expense_types'] as $expense2): ?>
+                                        <td class="tablecell-size3"><?php echo $expense2->expensetype; ?></td>
+                                    <?php endforeach ?>
+	                                    <td class="tablecell-size6">{{ $expense->expense_description }}</td>
+										<td class="tablecell-size6">{{ $expense->amount }}</td>
+										<td class="tablecell-size6">{{ $expense->year }}</td>
+	                                    <td class="tablecell-size5">{{ $expense->updated_at->format('F d, Y h:ia') }}</td>
+	                                    <td>
+	                                        <a href="/edit-project/{{ $user->id }}/{{ $project->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+	                                        {{ Form::open(['url' => '/user-project/' .$user->id . '/' . $project->id, 'method' => 'DELETE']) }}
+	                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+	                                        {{ Form::close() }}
+	                                    </td>
+	                                </tr>
+	                                @endforeach
+	                            </tbody>
+	                        </table>
+	                    </div>
+					</div>
+				</br>
+					<a href="/add-expense/{{ $user->id }}/{{ $project->id }}" class="btn btn-info btn-align-bottom col-lg-12" style="margin-right: 3px;">Add Revenue</a>
+				</div>
 				</div>
 			</div>
 		</div>
