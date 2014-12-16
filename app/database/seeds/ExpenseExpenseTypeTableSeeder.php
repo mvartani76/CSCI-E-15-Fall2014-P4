@@ -47,27 +47,63 @@ class ExpenseExpenseTypeTableSeeder extends Seeder {
 		$expense10->save();
 
 		$expense11 = Expense::find(36);
-		$expense11->expensetypes()->attach(5);
+		$expense11->expensetypes()->attach(1);
 		$expense11->save();
 
 		$expense12 = Expense::find(37);
-		$expense12->expensetypes()->attach(6);
+		$expense12->expensetypes()->attach(2);
 		$expense12->save();
 
 		$expense13 = Expense::find(38);
-		$expense13->expensetypes()->attach(6);
+		$expense13->expensetypes()->attach(3);
 		$expense13->save();
 
 		$expense14 = Expense::find(39);
-		$expense14->expensetypes()->attach(6);
+		$expense14->expensetypes()->attach(4);
 		$expense14->save();
 
 		$expense15 = Expense::find(40);
-		$expense15->expensetypes()->attach(6);
+		$expense15->expensetypes()->attach(5);
 		$expense15->save();
 
 		$expense16 = Expense::find(41);
-		$expense16->expensetypes()->attach(7);
+		$expense16->expensetypes()->attach(1);
 		$expense16->save();
+
+		$expense17 = Expense::find(42);
+		$expense17->expensetypes()->attach(2);
+		$expense17->save();
+
+		$expense18 = Expense::find(43);
+		$expense18->expensetypes()->attach(3);
+		$expense18->save();
+
+		$expense19 = Expense::find(44);
+		$expense19->expensetypes()->attach(4);
+		$expense19->save();
+
+		$expense20 = Expense::find(45);
+		$expense20->expensetypes()->attach(5);
+		$expense20->save();
+
+		$expense21 = Expense::find(46);
+		$expense21->expensetypes()->attach(1);
+		$expense21->save();
+
+		$expense22 = Expense::find(47);
+		$expense22->expensetypes()->attach(2);
+		$expense22->save();
+
+		$expense23 = Expense::find(48);
+		$expense23->expensetypes()->attach(3);
+		$expense23->save();
+
+		$expense24 = Expense::find(49);
+		$expense24->expensetypes()->attach(4);
+		$expense24->save();
+
+		$expense25 = Expense::find(50);
+		$expense25->expensetypes()->attach(5);
+		$expense25->save();				
 	}
 }
