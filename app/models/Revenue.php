@@ -36,4 +36,16 @@ class Revenue extends Eloquent implements UserInterface, RemindableInterface {
 	return $this->belongsToMany('User');
     }
 
+    # Model events...
+    # http://laravel.com/docs/eloquent#model-events
+    public static function boot() {
+        parent::boot();
+        static::deleting(function($revenue) {
+            DB::statement('DELETE FROM project_revenue WHERE revenue_id = ?', array($revenue->id));
+        });
+        static::deleting(function($revenue) {
+            DB::statement('DELETE FROM revenue_revenue_type WHERE revenue_id = ?', array($revenue->id));
+        });
+    }
+
 }

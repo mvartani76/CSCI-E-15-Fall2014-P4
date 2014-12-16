@@ -36,4 +36,15 @@ class Expense extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->belongsToMany('User');
     }
 
+    # Model events...
+    # http://laravel.com/docs/eloquent#model-events
+    public static function boot() {
+        parent::boot();
+        static::deleting(function($expense) {
+            DB::statement('DELETE FROM expense_project WHERE expense_id = ?', array($expense->id));
+        });
+        static::deleting(function($expense) {
+            DB::statement('DELETE FROM expense_expense_type WHERE expense_id = ?', array($expense->id));
+        });
+    }
 }

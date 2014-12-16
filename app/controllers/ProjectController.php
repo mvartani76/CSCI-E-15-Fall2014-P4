@@ -176,7 +176,7 @@ class ProjectController extends BaseController {
 			$project->save();
 		}
 		catch (Exception $e) {
-			return Redirect::to('/add-revenue/'.$user->id.'/'.$project->id.'/'.$revenue->id)
+			return Redirect::to('/add-revenue/'.$user->id.'/'.$project->id)
 				->with('flash_message', 'Add Revenue failed; please try again.')
 				->with('flash_type', 'alert-danger')
 				->withInput();
@@ -184,5 +184,98 @@ class ProjectController extends BaseController {
 
 		return Redirect::to('/add-revenue/'.$user->id.'/'.$project->id)->with('flash_message', 'Revenue added Successfully!');		
 	}
+
+	public function getAddexpense($uid,$pid) {
+		$project = Project::find($pid);
+		$user = Auth::user();
+		return View::make('/add-expense',['user' => $user],['project' => $project])->withOnly('project');
+	}
+
+	// Process form for a new expense
+	public function postAddexpense($uid, $pid) {
+
+		$user = Auth::user();
+		$project = Project::find($pid);
+
+		# Step 1) Define the rules
+		$rules = array(
+			'expense_description' => 'required',
+			'expensetype' => 'required',
+			'amount' => 'required',
+			'year' => 'required'
+		);
+		# Step 2)
+		$validator = Validator::make(Input::all(), $rules);
+		# Step 3
+		if($validator->fails()) {
+			return Redirect::to('/add-expense/'.$user->id.'/'.$project->id)
+				->with('flash_message', 'Add expense failed; please fix the errors listed below.')
+				->with('flash_type', 'alert-danger')
+				->withInput()
+				->withErrors($validator);
+		}
+    
+	    $expense = new Expense();
+	    $expense->expense_description = Input::get('expense_description');
+	    $expense->amount = Input::get('amount');
+	    $expense->year = Input::get('year');
+	    # Need to add 1 to expense type as result is base 0
+		$expense2 = Input::get('expensetype')+1;
+	    try {
+	    	$expense->save();
+			$expense->expensetypes()->attach($expense2);
+			$expense->save();
+			$project->expenses()->attach($expense->id);
+			$project->save();
+		}
+		catch (Exception $e) {
+			return Redirect::to('/add-expense/'.$user->id.'/'.$project->id)
+				->with('flash_message', 'Add Expense failed; please try again.')
+				->with('flash_type', 'alert-danger')
+				->withInput();
+		}
+
+		return Redirect::to('/add-expense/'.$user->id.'/'.$project->id)->with('flash_message', 'Expense added Successfully!');		
+	}
+
+	// Process form to delete revenue line item
+	public function deleteRevenue($uid,$pid,$rid) {
+
+		$user = Auth::user();
+		$project = Project::findOrFail($pid);
+		
+		try {
+	        $revenue = Revenue::findOrFail($rid);
+
+	    }
+	    catch(exception $e) {
+	        return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)->with('flash_message', 'Could not delete revenue '. $rid .' - not found.')
+	        													->withInput();
+	    }
+
+	    Revenue::destroy($rid);
+		return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)->with('flash_message', 'Revenue deleted.');
+	    
+	}
+
+	// Process form to delete expense line item
+	public function deleteExpense($uid,$pid,$eid) {
+
+		$user = Auth::user();
+		$project = Project::findOrFail($pid);
+		
+		try {
+	        $expense = Expense::findOrFail($eid);
+
+	    }
+	    catch(exception $e) {
+	        return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)->with('flash_message', 'Could not delete expense '. $eid .' - not found.')
+	        													->withInput();
+	    }
+
+	    Expense::destroy($eid);
+		return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)->with('flash_message', 'Expense deleted.');
+	}
+
 
 }

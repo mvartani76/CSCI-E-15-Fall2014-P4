@@ -7,17 +7,18 @@
 	    <!-- Include common navigation bar -->
 		@include('common-navigation')
 
-				@if ( Session::has('flash_message') )			 
-				  <div class= "alert {{ Session::get('flash_type') }}">
-				      <h3>{{ Session::get('flash_message') }}</h3>
-				  </div>			  
-				@endif
-
-				@foreach($errors->all() as $message)
-					<div>{{ $message }}</div>
-				@endforeach
 		<div class="container-fluid">
-			<h1>Edit Project <a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h1>
+			<h2>Edit Project 
+			@if ( Session::has('flash_message') )            
+				<div class= "alert error-alert text-danger  {{ Session::get('flash_type') }}">
+					{{ Session::get('flash_message') }}
+				</div>              
+			@endif
+			@foreach($errors->all() as $message)
+				<div>{{ $message }}</div>
+			@endforeach
+			<a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h2>
+
 			<div class = "col-lg-4">
 				<div class = "well-password-big">
 					<h2 class = "text-info">Project Parameters</h2>
@@ -122,8 +123,8 @@
 										<td class="tablecell-size3">{{ $revenue->year }}</td>
 	                                    <td class="tablecell-size3">{{ $revenue->updated_at->format('F d, Y h:ia') }}</td>
 	                                    <td>
-	                                        <a href="/edit-project/{{ $user->id }}/{{ $project->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
-	                                        {{ Form::open(['url' => '/user-project/' .$user->id . '/' . $project->id, 'method' => 'DELETE']) }}
+	                                        <a href="/edit-project/{{ $user->id }}/{{ $project->id }}/{{ $revenue->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+	                                        {{ Form::open(['url' => '/edit-project/'.$user->id.'/'.$project->id.'/'.$revenue->id, 'method' => 'DELETE']) }}
 	                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
 	                                        {{ Form::close() }}
 	                                    </td>
@@ -169,8 +170,8 @@
 										<td class="tablecell-size6">{{ $expense->year }}</td>
 	                                    <td class="tablecell-size5">{{ $expense->updated_at->format('F d, Y h:ia') }}</td>
 	                                    <td>
-	                                        <a href="/edit-project/{{ $user->id }}/{{ $project->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
-	                                        {{ Form::open(['url' => '/user-project/' .$user->id . '/' . $project->id, 'method' => 'DELETE']) }}
+	                                        <a href="/edit-project/{{ $user->id }}/{{ $project->id }}/{{ $expense->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+	                                        {{ Form::open(['url' => '/edit-project/'.$user->id.'/'.$project->id.'/'.$expense->id, 'method' => 'DELETE']) }}
 	                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
 	                                        {{ Form::close() }}
 	                                    </td>
@@ -181,7 +182,7 @@
 	                    </div>
 					</div>
 				</br>
-					<a href="/add-expense/{{ $user->id }}/{{ $project->id }}" class="btn btn-info btn-align-bottom col-lg-12" style="margin-right: 3px;">Add Revenue</a>
+					<a href="/add-expense/{{ $user->id }}/{{ $project->id }}" class="btn btn-info btn-align-bottom col-lg-12" style="margin-right: 3px;">Add Expense</a>
 				</div>
 				</div>
 			</div>
