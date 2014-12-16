@@ -47,27 +47,63 @@ class RevenueRevenueTypeTableSeeder extends Seeder {
 		$revenue10->save();
 
 		$revenue11 = Revenue::find(36);
-		$revenue11->revenuetypes()->attach(5);
+		$revenue11->revenuetypes()->attach(1);
 		$revenue11->save();
 
 		$revenue12 = Revenue::find(37);
-		$revenue12->revenuetypes()->attach(6);
+		$revenue12->revenuetypes()->attach(2);
 		$revenue12->save();
 
 		$revenue13 = Revenue::find(38);
-		$revenue13->revenuetypes()->attach(6);
+		$revenue13->revenuetypes()->attach(3);
 		$revenue13->save();
 
 		$revenue14 = Revenue::find(39);
-		$revenue14->revenuetypes()->attach(6);
+		$revenue14->revenuetypes()->attach(4);
 		$revenue14->save();
 
 		$revenue15 = Revenue::find(40);
-		$revenue15->revenuetypes()->attach(6);
+		$revenue15->revenuetypes()->attach(5);
 		$revenue15->save();
 
 		$revenue16 = Revenue::find(41);
-		$revenue16->revenuetypes()->attach(7);
+		$revenue16->revenuetypes()->attach(1);
 		$revenue16->save();
+
+		$revenue17 = Revenue::find(42);
+		$revenue17->revenuetypes()->attach(2);
+		$revenue17->save();
+
+		$revenue18 = Revenue::find(43);
+		$revenue18->revenuetypes()->attach(3);
+		$revenue18->save();
+
+		$revenue19 = Revenue::find(44);
+		$revenue19->revenuetypes()->attach(4);
+		$revenue19->save();
+
+		$revenue20 = Revenue::find(45);
+		$revenue20->revenuetypes()->attach(5);
+		$revenue20->save();
+
+		$revenue21 = Revenue::find(46);
+		$revenue21->revenuetypes()->attach(1);
+		$revenue21->save();
+
+		$revenue22 = Revenue::find(47);
+		$revenue22->revenuetypes()->attach(2);
+		$revenue22->save();
+
+		$revenue23 = Revenue::find(48);
+		$revenue23->revenuetypes()->attach(3);
+		$revenue23->save();
+
+		$revenue24 = Revenue::find(49);
+		$revenue24->revenuetypes()->attach(4);
+		$revenue24->save();
+
+		$revenue25 = Revenue::find(50);
+		$revenue25->revenuetypes()->attach(5);
+		$revenue25->save();				
 	}
 }
