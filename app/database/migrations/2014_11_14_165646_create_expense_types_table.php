@@ -19,7 +19,7 @@ class CreateExpenseTypesTable extends Migration {
 			# Most tables start off this way
 			$table->increments('id');
 
-			$table->string('expense_type');
+			$table->string('expensetype');
 			$table->string('expense_type_description');
 
 			# This generates two columns: `created_at` and `updated_at` to
