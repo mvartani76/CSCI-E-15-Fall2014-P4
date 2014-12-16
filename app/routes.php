@@ -41,8 +41,8 @@ Route::get('/create-project/{id}', 'ProjectController@getCreateproject');
 Route::post('/create-project/{id}', ['before' => 'csrf', 'uses' => 'ProjectController@postCreateproject'] );
 Route::get('/edit-project/{uid}/{pid}', 'ProjectController@getEditproject');
 Route::post('/edit-project/{uid}/{pid}', 'ProjectController@postEditproject');
-Route::get('/add-revenue/{id}', 'ProjectController@getAddrevenue');
-Route::post('/add-revenue/{id}', 'ProjectController@postAddrevenue');
+Route::get('/add-revenue/{uid}/{pid}', 'ProjectController@getAddrevenue');
+Route::post('/add-revenue/{uid}/{pid}', 'ProjectController@postAddrevenue');
 Route::delete('/user-revenue/{uid}/{rid}', 'ProjectController@deleterevenue');
 
 /* Comment Related Routes */
