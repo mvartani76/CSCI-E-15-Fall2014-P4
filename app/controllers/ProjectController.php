@@ -261,17 +261,13 @@ class ProjectController extends BaseController {
 		$project = Project::findOrFail($pid);
 		
 		try {
-	        $revenue = Revenue::findOrFail($rid);
-
+	        $revenue = Revenue::findOrFail($rid)->destroy($rid);
+	        return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)->with('flash_message', 'Revenue deleted.');
 	    }
 	    catch(exception $e) {
 	        return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)->with('flash_message', 'Could not delete revenue '. $rid .' - not found.')
 	        													->withInput();
 	    }
-
-	    Revenue::destroy($rid);
-		return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)->with('flash_message', 'Revenue deleted.');
-	    
 	}
 
 	// Process form to delete expense line item
@@ -281,16 +277,13 @@ class ProjectController extends BaseController {
 		$project = Project::findOrFail($pid);
 		
 		try {
-	        $expense = Expense::findOrFail($eid);
-
+	        $expense = Expense::findOrFail($eid)->destroy($eid);
+	        return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)->with('flash_message', 'Expense deleted.');
 	    }
 	    catch(exception $e) {
 	        return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)->with('flash_message', 'Could not delete expense '. $eid .' - not found.')
 	        													->withInput();
 	    }
-
-	    Expense::destroy($eid);
-		return Redirect::to('/edit-project/'.$user->id.'/'.$project->id)->with('flash_message', 'Expense deleted.');
 	}
 
 
