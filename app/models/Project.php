@@ -67,6 +67,14 @@ class Project extends Eloquent implements UserInterface, RemindableInterface {
         static::deleting(function($project) {
             DB::statement('DELETE FROM comment_project WHERE project_id = ?', array($project->id));
         });
+
+        static::deleting(function($project) {
+            DB::statement('DELETE FROM expense_project WHERE project_id = ?', array($project->id));
+        });
+
+        static::deleting(function($project) {
+            DB::statement('DELETE FROM project_revenue WHERE project_id = ?', array($project->id));
+        });
 	}
 
 }

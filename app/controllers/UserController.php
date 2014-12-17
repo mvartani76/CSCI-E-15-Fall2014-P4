@@ -1,7 +1,6 @@
 <?php
 class UserController extends BaseController {
 
-
 	/**
 	*
 	*/
@@ -10,8 +9,6 @@ class UserController extends BaseController {
 		parent::__construct();
 		$this->beforeFilter('auth', array('except' => array('index', 'show')));
 	}
-
-
 
     /**
 	* Show the new user signup form
@@ -46,7 +43,6 @@ class UserController extends BaseController {
 
 		$user = Auth::user();
 		
-
 		try {
 	        $project = Project::findOrFail($pid)->destroy($pid);
 	        return Redirect::to('/user-project/{{ user->id }}')->with('flash_message', 'Project deleted.');
@@ -54,7 +50,6 @@ class UserController extends BaseController {
 	    catch(exception $e) {
 	        return Redirect::to('/user-project/{{ user->id }}')->with('flash_message', 'Could not delete project - not found.');
 	    }
-	    
 	}
 
 	/**
