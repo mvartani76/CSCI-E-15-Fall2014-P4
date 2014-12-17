@@ -123,7 +123,7 @@
 										<td class="tablecell-size3">{{ $revenue->year }}</td>
 	                                    <td class="tablecell-size3">{{ $revenue->updated_at->format('F d, Y h:ia') }}</td>
 	                                    <td>
-	                                        <a href="/edit-project/{{ $user->id }}/{{ $project->id }}/{{ $revenue->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+	                                        <a href="/edit-revenue/{{ $user->id }}/{{ $project->id }}/{{ $revenue->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
 	                                        {{ Form::open(['url' => '/edit-project/'.$user->id.'/'.$project->id.'/'.$revenue->id, 'method' => 'DELETE']) }}
 	                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
 	                                        {{ Form::close() }}
@@ -170,7 +170,7 @@
 										<td class="tablecell-size6">{{ $expense->year }}</td>
 	                                    <td class="tablecell-size5">{{ $expense->updated_at->format('F d, Y h:ia') }}</td>
 	                                    <td>
-	                                        <a href="/edit-project/{{ $user->id }}/{{ $project->id }}/{{ $expense->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+	                                        <a href="/edit-expense/{{ $user->id }}/{{ $project->id }}/{{ $expense->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
 	                                        {{ Form::open(['url' => '/edit-project/'.$user->id.'/'.$project->id.'/'.$expense->id, 'method' => 'DELETE']) }}
 	                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
 	                                        {{ Form::close() }}

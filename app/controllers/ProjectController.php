@@ -185,6 +185,14 @@ class ProjectController extends BaseController {
 		return Redirect::to('/add-revenue/'.$user->id.'/'.$project->id)->with('flash_message', 'Revenue added Successfully!');		
 	}
 
+	public function getEditrevenue($uid,$pid,$rid) {
+		$project = Project::find($pid);
+		$user = Auth::user();
+		$revenue = Revenue::find($rid);
+		$revenuetype = Revenue_type::all();
+		return View::make('/edit-revenue',['user' => $user,'project' => $project,'revenue' => $revenue,'revenuetype' => $revenuetype])->withOnly('revenue');
+	}
+
 	public function getAddexpense($uid,$pid) {
 		$project = Project::find($pid);
 		$user = Auth::user();
@@ -236,6 +244,14 @@ class ProjectController extends BaseController {
 		}
 
 		return Redirect::to('/add-expense/'.$user->id.'/'.$project->id)->with('flash_message', 'Expense added Successfully!');		
+	}
+
+	public function getEditexpense($uid,$pid,$eid) {
+		$project = Project::find($pid);
+		$user = Auth::user();
+		$expense = Expense::find($eid);
+		$expensetype = Expense_type::all();
+		return View::make('/edit-expense',['user' => $user,'project' => $project,'expense' => $expense,'expensetype' => $expensetype])->withOnly('expense');
 	}
 
 	// Process form to delete revenue line item

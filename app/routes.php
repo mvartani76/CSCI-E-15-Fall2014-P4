@@ -19,17 +19,11 @@ Route::get('/logout', ['before' => 'auth', 'uses' => 'IndexController@getLogout'
 // Display the form for a new user
 // Using a controller to show this form as well as additional logic/validation
 Route::get('/create-user', 'UserController@getCreateuser');
-
 Route::post('/create-user', ['before' => 'csrf', 'uses' => 'UserController@postCreateuser'] );
-
 Route::get('/edit-user/{id}', 'UserController@getEdituser');
-
 Route::get('/user-dashboard/{id}', 'UserController@getUserdashboard');
-
 Route::get('/user-project/{id}', 'UserController@getUserproject');
-
 Route::delete('/user-project/{uid}/{pid}', 'UserController@deleteUserproject');
-
 Route::get('/user-admin', function() {
 
         $users = User::all();
@@ -45,6 +39,10 @@ Route::get('/add-revenue/{uid}/{pid}', 'ProjectController@getAddrevenue');
 Route::post('/add-revenue/{uid}/{pid}', 'ProjectController@postAddrevenue');
 Route::get('/add-expense/{uid}/{pid}', 'ProjectController@getAddexpense');
 Route::post('/add-expense/{uid}/{pid}', 'ProjectController@postAddexpense');
+Route::get('/edit-revenue/{uid}/{pid}/{rid}', 'ProjectController@getEditrevenue');
+Route::post('/edit-revenue/{uid}/{pid}/{rid}', 'ProjectController@postEditrevenue');
+Route::get('/edit-expense/{uid}/{pid}/{eid}', 'ProjectController@getEditexpense');
+Route::post('/edit-expense/{uid}/{pid}/{eid}', 'ProjectController@postEditexpense');
 Route::delete('/edit-project/{uid}/{pid}/{rid}', 'ProjectController@deleterevenue');
 Route::delete('/edit-project/{uid}/{pid}/{rid}', 'ProjectController@deleteexpense');
 
