@@ -39,6 +39,7 @@
 					{{ Form::submit('Add Revenue', ['class' => 'btn btn-info btn-align-bottom btn-block ']) }}
 
 				{{ Form::close() }}
+				<a href="/user-dashboard/{{ $user->id }}" class="btn btn-default btn-block">Return to User Dashboard</a>
 			</div>
 		</div>
 	</div>

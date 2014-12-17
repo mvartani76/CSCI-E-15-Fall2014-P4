@@ -18,6 +18,7 @@
 		@foreach($errors->all() as $message)
 		<div>{{ $message }}</div>
 		@endforeach
+
 		<div class="account-wall">
 			<div class="form-signin">
 
@@ -39,6 +40,8 @@
 					{{ Form::submit('Add Expense', ['class' => 'btn btn-info btn-align-bottom btn-block ']) }}
 
 				{{ Form::close() }}
+				</br>
+				<a href="/user-dashboard/{{ $user->id }}" class="btn btn-default btn-block">Return to User Dashboard</a>
 			</div>
 		</div>
 	</div>
