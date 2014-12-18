@@ -17,6 +17,10 @@ As a remote student, my demo is located in jing at the following location (TBD).
 
 ## Details for Teaching Team
 
+Initial diagram description...
+
+![](https://github.com/mvartani76/CSCI-E-15-Fall2014-P4/blob/master/p4_database_diagram.jpg)
+
 ### Interesting Observations / Code Modifications
 
 The debugbars were actually adding the glyphicons from font-awesome.css so I needed to copy the /fonts/ directory over from one of the packages to the production server to get the glyphicons to work...
