@@ -19,7 +19,7 @@
 	@endforeach
 	
 	<a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a>
-	<a href="/user-project/{{ $user->id }}" class="btn btn-warning pull-right">Return to User Projects</a>
+	<a href="/user-project/{{ $user->id }}" class="btn btn-warning pull-right">Return to User Projects</a></h2>
 
 	<div class = "col-lg-6">
 		<div class="well">

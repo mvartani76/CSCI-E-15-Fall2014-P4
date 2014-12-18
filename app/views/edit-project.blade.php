@@ -17,8 +17,8 @@
 			@foreach($errors->all() as $message)
 				<div>{{ $message }}</div>
 			@endforeach
-			<a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h2>
-
+			<a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a>
+			<a href="/user-project/{{ $user->id }}" class="btn btn-warning pull-right">Return to User Projects</a></h2>
 			<div class = "col-lg-4">
 				<div class = "well-password-big">
 					<h2 class = "text-info">Project Parameters</h2>
