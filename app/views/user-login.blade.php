@@ -13,6 +13,15 @@
 	<div class="container">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
 			<h1 class="text-center">Financial Valuation Web App Sign-In</h1>
+            @if ( Session::has('flash_message') )            
+                  <div class= "alert {{ Session::get('flash_type') }}">
+                      <h3>{{ Session::get('flash_message') }}</h3>
+                  </div>              
+                @endif
+
+                @foreach($errors->all() as $message)
+                    <div>{{ $message }}</div>
+                @endforeach
             <div class="account-wall">
 				<div class="form-signin">
                 {{ Form::open(array('url' => '/user-login', 'method' => 'POST')) }}   

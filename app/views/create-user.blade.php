@@ -19,7 +19,6 @@
 					<div class="form-signin">
 						{{ Form::open(array('url' => '/create-user')) }}
 
-
 							{{ Form::text('first_name', Null, array('class' => 'form-control', 'placeholder' => 'First Name', 'required', 'autofocus')) }}
 							{{ Form::text('last_name', Null, array('class' => 'form-control', 'placeholder' => 'Last Name', 'required', 'autofocus')) }}
 							{{ Form::text('company_name', Null, array('class' => 'form-control', 'placeholder' => 'Company Name', 'autofocus')) }}
@@ -72,6 +71,9 @@
 							{{ Form::submit('Create User', array('class'=>'btn btn-lg btn-primary btn-block')) }}
 
 						{{ Form::close() }}
+						</br>
+						<a href='/user-login' class="btn btn-lg btn-warning btn-block">Return to Login Scren</a>
+
 					</div>
 				</div>
 			</div>

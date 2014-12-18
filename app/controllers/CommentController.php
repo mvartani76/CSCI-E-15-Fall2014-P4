@@ -19,7 +19,7 @@ class CommentController extends BaseController {
 	}
 
 
-// Process form for a new project
+	// Process form for a new comment
 	public function postCreatecomment() {
 
 		$user = Auth::user();
@@ -90,6 +90,74 @@ class CommentController extends BaseController {
 	    
 	}
 
+	public function getCreatetask($uid) {
+		$user = Auth::user();
+		return View::make('/create-task',['user' => $user]);
+	}
+
+
+	// Process form for a new task
+	public function postCreatetask() {
+
+		$user = Auth::user();
+		$comments = Comment::all();
+
+		# Step 1) Define the rules
+		$rules = array(
+			'task_title' => 'required',
+			'task_text' => 'required'
+		);
+		# Step 2)
+		$validator = Validator::make(Input::all(), $rules);
+		# Step 3
+		if($validator->fails()) {
+			return Redirect::to('/create-task/'.$user->id)
+				->with('flash_message', 'Create Task failed; please fix the errors listed below.')
+				->with('flash_type', 'alert-danger')
+				->withInput()
+				->withErrors($validator);
+		}
+    
+
+    	$task = New Task();
+	    $task->task_title = Input::get('task_title');
+	    $task->task_text = Input::get('task_text');
+
+	    try {
+			$task->save();
+			$user->tasks()->attach($task->id);
+			$user->save();
+			
+		}
+		catch (Exception $e) {
+			return Redirect::to('/create-task/'.$user->id)
+				->with('flash_message', 'Create task failed; please try again.')
+				->with('flash_type', 'alert-danger')
+				->withInput();
+		}
+
+		return Redirect::to('/user-task/'.$user->id)->with('flash_message', 'Task Created!');
+	}
+
+	// Process form to delete a task
+	public function deleteTask($uid,$tid) {
+
+		$user = Auth::user();
+		echo $tid;
+		
+		try {
+	        $task = Task::findOrFail($tid);
+
+	    }
+	    catch(exception $e) {
+	        return Redirect::to('/user-task/{{ user->id }}')->with('flash_message', 'Could not delete task '. $tid .' - not found.')
+	        													->withInput();
+	    }
+
+	    Task::destroy($tid);
+		return Redirect::to('/user-task/{{ user->id }}')->with('flash_message', 'Task deleted.');
+	    
+	}
 
 
 }

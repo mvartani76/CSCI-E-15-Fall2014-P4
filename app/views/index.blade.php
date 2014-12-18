@@ -23,7 +23,7 @@
                 project properties.<br><br>
 
                 There are several tables used in this application: users, projects, revenues, revenue_types, expenses,
-                expense_types, comments, permissions, and the associated pivot tables. 
+                expense_types, comments, tasks, permissions, and the associated pivot tables. 
             </blockquote>
             <a href='/user-login' class="btn btn-warning btn-block">Login/Signup</a>
         </div>
@@ -40,6 +40,7 @@
                 Fourth, I would like to add some search functionality and sorting functionality.<br><br>
                 Fifth, I would like to update the user-dashboard page... Actually have the task section be functional,
                 and maybe show some graphical statistics about user usage on the page..?
+                Sixth, I need to utilize the permissions fields to have different views for each permission type.
             </blockquote>
         </div>
     </div>

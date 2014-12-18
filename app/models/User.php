@@ -39,6 +39,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     	return $this->belongsToMany('Comment');
     }
 
+    public function tasks()
+    {
+    	return $this->belongsToMany('Task');
+    }
+
+    # Count the number of projects associated with user
     public function countprojects()
     {
     	$i = 0;
@@ -49,10 +55,22 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $i;
     }
 
+    # Count the number of comments associated with user
     public function countcomments()
     {
     	$i = 0;
 		foreach ($this['comments'] as $comment)
+		{
+			$i = $i+1;
+		}
+		return $i;
+    }
+
+    # Count the number of tasks associated with user
+    public function counttasks()
+    {
+    	$i = 0;
+		foreach ($this['tasks'] as $task)
 		{
 			$i = $i+1;
 		}

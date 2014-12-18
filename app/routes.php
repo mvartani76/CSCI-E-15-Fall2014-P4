@@ -53,5 +53,8 @@ Route::get('/view-project/{uid}/{pid}', 'ProjectController@getViewproject');
 Route::get('/create-comment/{id}', 'CommentController@getCreatecomment');
 Route::post('/create-comment/{id}', 'CommentController@postCreatecomment');
 Route::get('/user-comment/{id}', 'UserController@getUsercomment');
-Route::delete('/user-comment/{uid}/{cid}', 'CommentController@deletecomment');
-
+Route::delete('/user-comment/{uid}/{tid}', 'CommentController@deletecomment');
+Route::get('/create-task/{id}', 'CommentController@getCreatetask');
+Route::post('/create-task/{id}', 'CommentController@postCreatetask');
+Route::get('/user-task/{id}', 'UserController@getUsertask');
+Route::delete('/user-task/{uid}/{tid}', 'CommentController@deletetask');

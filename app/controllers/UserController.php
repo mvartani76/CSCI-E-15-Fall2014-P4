@@ -27,6 +27,7 @@ class UserController extends BaseController {
 		else {
 			return Redirect::to('/user-login')
 				->with('flash_message', 'Log in failed; please try again.')
+				->with('flash_type', 'alert-danger')
 				->withInput();
 		}
 		return Redirect::to('/user-dashboard/{id}');
@@ -55,6 +56,11 @@ class UserController extends BaseController {
 	public function getUsercomment($id) {
 		$user = User::find($id);
 		return View::make('user-comment',['user' => $user]);
+	}	
+
+	public function getUsertask($id) {
+		$user = User::find($id);
+		return View::make('user-task',['user' => $user]);
 	}	
 
 	// Process form to delete a project

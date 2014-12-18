@@ -31,7 +31,7 @@
                                     <th class="tablecell-size2">Comment Text</th>
                                     <th class="tablecell-size3">Associated Project</th>
                                     <th>Date/Time Created</th>
-                                    <th>Edit/Delete</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,7 +49,6 @@
                                     <?php endforeach ?>
                                     <td class="tablecell-size4">{{ $comment->created_at->format('F d, Y h:ia') }}</td>
                                     <td>
-                                        <a href="/edit-comment/{{ $user->id }}/{{ $comment->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
                                         {{ Form::open(['url' => '/user-comment/' .$user->id . '/' . $comment->id, 'method' => 'DELETE']) }}
                                         {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         {{ Form::close() }}
@@ -80,7 +79,7 @@
                                     <th class="tablecell-size2">Comment Text</th>
                                     <th class="tablecell-size3">Associated Project</th>
                                     <th class="tablecell-size4">Date/Time Created</th>
-                                    <th>Edit/Delete</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                  
@@ -95,7 +94,6 @@
                                     <?php endforeach ?>                                    
                                     <td class="tablecell-size4">{{ $comment->created_at->format('F d, Y h:ia') }}</td>
                                     <td>
-                                        <a href="/edit-comment/{{ $user->id }}/{{ $comment->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
                                         {{ Form::open(['url' => '/user-comment/' .$user->id . '/' . $comment->id, 'method' => 'DELETE']) }}
                                         {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         {{ Form::close() }}

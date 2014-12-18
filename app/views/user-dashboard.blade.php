@@ -30,7 +30,7 @@
               </div>
               <div class="col-xs-9 text-right">
                 <div class="huge">{{ (Auth::user()->countcomments()) }}</div>
-                <div>New Comments!</div>
+                <div>Comments</div>
               </div>
             </div>
           </div>
@@ -51,12 +51,12 @@
                 <i class="fa fa-tasks fa-5x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge">12</div>
-                <div>New Tasks!</div>
+                <div class="huge">{{ (Auth::user()->counttasks()) }}</div>
+                <div>Tasks</div>
               </div>
             </div>
           </div>
-          <a href="#">
+          <a href="/user-task/{{ (Auth::user()->id) }}">
           <div class="panel-footer">
             <span class="pull-left">View Details</span>
             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
