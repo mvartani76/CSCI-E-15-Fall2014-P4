@@ -18,7 +18,7 @@
                 area and much of it has been done using excel spreadsheets. A cloud based web application could really
                 be useful and speed up/reduce errors when putting project valuations together.</br></br>
 
-                This web application allows users register/login to the website, create/edit/view/delete projects,
+                This web application allows users to register/login to the website, create/edit/view/delete projects,
                 add/view/delete comments about those projects, add/view/edit/delete revenues/expenses, and view/edit
                 project properties.<br><br>
 
@@ -39,8 +39,10 @@
                 table that combined revenues and expenses but decided to ditch that idea.<br><br>
                 Fourth, I would like to add some search functionality and sorting functionality.<br><br>
                 Fifth, I would like to update the user-dashboard page... Actually have the task section be functional,
-                and maybe show some graphical statistics about user usage on the page..?
-                Sixth, I need to utilize the permissions fields to have different views for each permission type.
+                and maybe show some graphical statistics about user usage on the page..?<br><br>
+                Sixth, I need to utilize the permissions fields to have different views for each permission type.<br><br>
+                Seventh, add email verification/authorization and forgot password functionality via email or secret questions.. Maybe also
+                add a captcha...
             </blockquote>
         </div>
     </div>
