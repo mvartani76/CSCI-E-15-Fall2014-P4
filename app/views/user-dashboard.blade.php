@@ -13,8 +13,7 @@
     <!-- Include common navigation bar -->
     @include('common-navigation')
 
-		<h1>User Dashboard</h1>
-      {{ (Auth::user()->username) }}
+		<h1>User Dashboard - <i class = "text-info">{{ (Auth::user()->username) }}</i></h1> 
                 @if ( Session::has('flash_message') )            
                   <div class= "alert {{ Session::get('flash_type') }}">
                       <h3>{{ Session::get('flash_message') }}</h3>
@@ -91,36 +90,7 @@
   </div>
 </div>
                 <!-- /.row -->
-
-
-
-
-<div class="graph-container">
-				<div id="bar-example" style="height: 500px; width: 500px;"></div>
-</div>
-
-
-		
 <script type="text/javascript" src="/js/jquery.js"></script>
- <script type="text/javascript" src="/js/bootstrap.js"></script>
- <script type="text/javascript" src="/js/plugins/morris/morris.min.js"></script>
- <script type="text/javascript" src="/js/plugins/morris/morris-data.js"></script>
- <script type="text/javascript" src="/js/plugins/morris/raphael.min.js"></script>
-<script type="text/javascript">
-new Morris.Bar({
-  element: 'bar-example',
-  data: [
-    { y: '2006', a: 100, b: 90 },
-    { y: '2007', a: 75,  b: 65 },
-    { y: '2008', a: 50,  b: 40 },
-    { y: '2009', a: 75,  b: 65 },
-    { y: '2010', a: 50,  b: 40 },
-    { y: '2011', a: 75,  b: 65 },
-    { y: '2012', a: 100, b: 90 }
-  ],
-  xkey: 'y',
-  ykeys: ['a', 'b'],
-  labels: ['Series A', 'Series B']
-});
-</script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
 @stop
