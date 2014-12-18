@@ -67,7 +67,7 @@
 
 							{{ Form::text('email', Null, array('class' => 'form-control', 'placeholder' => $user->email, 'required', 'autofocus')) }}
 							{{ Form::text('mobile_phone', Null, array('class' => 'form-control', 'placeholder' => $user->mobile_phone, 'required', 'autofocus')) }}
-							{{ Form::text('password', Null, array('class' => 'form-control', 'placeholder' => $user->password, 'required', 'autofocus')) }}
+							{{ Form::text('password', Null, array('class' => 'form-control', 'required', 'autofocus')) }}
 
 							{{ Form::submit('Edit User', array('class'=>'btn btn-lg btn-primary btn-block')) }}
 

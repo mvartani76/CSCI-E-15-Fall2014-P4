@@ -7,7 +7,7 @@ class UserController extends BaseController {
 	public function __construct() {
 		# Make sure BaseController construct gets called
 		parent::__construct();
-		$this->beforeFilter('auth', array('except' => array('index', 'show', 'getUserlogin', 'postUserlogin')));
+		$this->beforeFilter('auth', array('except' => array('index', 'show', 'getUserlogin', 'postUserlogin', 'getCreateuser','postCreateuser')));
 	}
 
     /**
@@ -35,7 +35,7 @@ class UserController extends BaseController {
 
 
 	public function getCreateuser() {
-		return View::make('create-user');
+		return View::make('/create-user');
 	}
 
 	public function getEdituser($id) {
@@ -126,9 +126,7 @@ class UserController extends BaseController {
 				->with('flash_type', 'alert-danger')
 				->withInput();
 		}
-		# Log in
-		Auth::login($user);
-		return Redirect::to('/user-dashboard/{id}')->with('flash_message', 'Welcome to the Financial Valuation Web Application!');
+		return Redirect::to('/user-login')->with('flash_message', 'User Successfully Created!');
 	}
 
 	public function getCreateproject($id) {

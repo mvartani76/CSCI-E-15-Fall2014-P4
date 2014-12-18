@@ -17,10 +17,10 @@
 				@endforeach
 				<div class="account-wall">
 					<div class="form-signin">
-						{{ Form::open(array('url' => '/create-user')) }}
+						{{ Form::open(array('url' => '/create-user', 'method' => 'POST')) }}
 
-							{{ Form::text('first_name', Null, array('class' => 'form-control', 'placeholder' => 'First Name', 'required', 'autofocus')) }}
-							{{ Form::text('last_name', Null, array('class' => 'form-control', 'placeholder' => 'Last Name', 'required', 'autofocus')) }}
+							{{ Form::text('first_name', Null, array('class' => 'form-control', 'placeholder' => 'First Name', 'autofocus')) }}
+							{{ Form::text('last_name', Null, array('class' => 'form-control', 'placeholder' => 'Last Name', 'autofocus')) }}
 							{{ Form::text('company_name', Null, array('class' => 'form-control', 'placeholder' => 'Company Name', 'autofocus')) }}
 							{{ Form::text('username', Null, array('class' => 'form-control', 'placeholder' => 'User Name', 'required', 'autofocus')) }}
 

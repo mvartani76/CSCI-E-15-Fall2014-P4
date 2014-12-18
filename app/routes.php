@@ -21,7 +21,7 @@ Route::post('/user-login', 'UserController@postUserlogin' );
 Route::get('/logout', ['before' => 'auth', 'uses' => 'IndexController@getLogout'] );
 
 Route::get('/create-user', 'UserController@getCreateuser');
-Route::post('/create-user', ['before' => 'csrf', 'uses' => 'UserController@postCreateuser'] );
+Route::post('/create-user', 'UserController@postCreateuser');
 Route::get('/edit-user/{id}', 'UserController@getEdituser');
 Route::get('/user-dashboard/{id}', 'UserController@getUserdashboard');
 Route::get('/user-project/{id}', 'UserController@getUserproject');

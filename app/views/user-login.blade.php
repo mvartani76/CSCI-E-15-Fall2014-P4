@@ -38,7 +38,7 @@
 				</div>
                 <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
             </div>
-            {{ link_to('/create-user', 'Create a New Account', array("class"=>"text-center new-account btn btn-warning")) }}
+            {{ link_to('/create-user', 'Create a New Account', array('class'=>'text-center new-account btn btn-warning')) }}
         </div>
     </div>
 
