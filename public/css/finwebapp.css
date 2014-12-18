@@ -110,7 +110,7 @@
 }
 .tablecell-size1
 {
-    width:250px;
+    width:150px;
 }
 .tablecell-size2
 {
@@ -130,7 +130,7 @@
 }
 .tablecell-size6
 {
-    width:450px;
+    width:350px;
 }
 .btn-align-bottom
 {
@@ -138,4 +138,10 @@
     margin: auto;
     vertical-align: bottom;
 
+}
+
+.tablecell-size2-small-text
+{
+    width:100px;
+    font-size: x-small;
 }
