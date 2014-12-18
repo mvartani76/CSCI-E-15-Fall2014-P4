@@ -11,28 +11,36 @@
 @section('content')
 
 	<div class="container">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-			<h1 class="text-center">Financial Valuation Web App Sign-In</h1>
-            <div class="account-wall">
-				<div class="form-signin">
-                {{ Form::open(array('url' => '/', 'method' => 'POST')) }}   
-					{{ Form::email('email', Null, array('class' => 'form-control', 'placeholder' => 'Email', 'required', 'autofocus')) }}
+        <div class="well">
+            <h2 class= "text-primary">Financial Valuation Web App Description</h2>
+            <blockquote>This web application utilizes the Laravel framework and blade templating to create
+                a web based application for financial valuation of projects. I have done quite a bit of work in this
+                area and much of it has been done using excel spreadsheets. A cloud based web application could really
+                be useful and speed up/reduce errors when putting project valuations together.</br></br>
 
-					{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Password', 'required'))}}
-					{{ Form::submit('Sign In', array('class'=>'btn btn-lg btn-primary btn-block'))}}
-                    <label class="checkbox pull-left">
-                    <input type="hidden" name= "remember_me" value = "false">
-                    <input type="checkbox" name = "remember_me" value= "true">
-                    Remember me
-                </label>
-                {{ Form::close() }}
-				</div>
-				<!-- Tried using laravel here but could not get the generated html to match -->
+                This web application allows users register/login to the website, create/edit/view/delete projects,
+                add/view/delete comments about those projects, add/view/edit/delete revenues/expenses, and view/edit
+                project properties.<br><br>
 
-                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
-            </div>
-            {{ link_to('/create-user', 'Create a New Account', array("class"=>"text-center new-account btn btn-warning")) }}
+                There are several tables used in this application: users, projects, revenues, revenue_types, expenses,
+                expense_types, comments, permissions, and the associated pivot tables. 
+            </blockquote>
+            <a href='/user-login' class="btn btn-warning btn-block">Login/Signup</a>
+        </div>
+        <div class="well">
+            <h2 class= "text-success">Remaining Work</h2>
+            <blockquote>Due to time constraints, I was not able to implement everything that I initially set out to
+                do. First and foremost, the valuation calculations took a short cut. I only used revenues and expenses
+                although they should probably be separated further into COGS, SG&A, and R&D as well as non-cash based expenses.
+                I didn't include any of the non-cash items in the calculation.<br><br>
+                Second, I think it would be much easier to enter the revenues/expenses as an array of numbers instead of just
+                one number per year. The add-revenue and add-expense pages currently only add a revenue/expense for one year.<br><br>
+                Third, I need to clean up the tables in the database that are no longer used. I initially thought to use a proforma
+                table that combined revenues and expenses but decided to ditch that idea.<br><br>
+                Fourth, I would like to add some search functionality and sorting functionality.<br><br>
+                Fifth, I would like to update the user-dashboard page... Actually have the task section be functional,
+                and maybe show some graphical statistics about user usage on the page..?
+            </blockquote>
         </div>
     </div>
-
 @stop
