@@ -16,7 +16,7 @@ Route::get('/', 'IndexController@getIndex');
 
 // Display the form for a new user
 // Using a controller to show this form as well as additional logic/validation
-Route::get('/user-login',['before' => 'auth', 'uses' => 'UserController@getUserlogin']);
+Route::get('/user-login', 'UserController@getUserlogin');
 Route::post('/user-login', ['before' => 'auth', 'uses' => 'UserController@postUserlogin'] );
 Route::get('/logout', ['before' => 'auth', 'uses' => 'IndexController@getLogout'] );
 
