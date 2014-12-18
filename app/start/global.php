@@ -79,3 +79,10 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+if(Config::get('app.debug_bar') == true) {
+	Debugbar::enable();
+}
+else {
+	Debugbar::disable();
+}
