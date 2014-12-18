@@ -8,7 +8,7 @@
 @include('common-navigation')
 
 <div class="container-fluid">
-	<h2>View Project {{ $project->id }}
+	<h2>View <i class="text-info">Project {{ $project->id }}</i>
 	@if ( Session::has('flash_message') )            
 		<div class= "alert error-alert text-danger  {{ Session::get('flash_type') }}">
 			{{ Session::get('flash_message') }}
@@ -17,7 +17,9 @@
 	@foreach($errors->all() as $message)
 		<div>{{ $message }}</div>
 	@endforeach
-	<a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a></h2>
+	
+	<a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a>
+	<a href="/user-project/{{ $user->id }}" class="btn btn-warning pull-right">Return to User Projects</a>
 
 	<div class = "col-lg-6">
 		<div class="well">
@@ -108,7 +110,7 @@
 				</table>
 			</div>
 		</div>
-		</br>
+
 		<div class = "well">
 			<h2 class = "text-info">Present Value = $
 				<?php
@@ -132,11 +134,26 @@
 				?>
 			</h2>
 		</div>
+		<div class = "well">
+			<div class="graph-container">
+				<h2 class="text-danger text-center">NOPAT ($)</h2>
+				<div id="nopatchart" style="height: 400px; width: 600px;"></div>
+			</div>
+			<br></br>
+		</div>
 	</div>
 	<div class = "col-lg-6">
 		<div class = "well">
 			<div class="graph-container">
+				<h2 class="text-danger text-center">Revenues ($)</h2>
 				<div id="revenuechart" style="height: 400px; width: 600px;"></div>
+			</div>
+			<br></br>
+		</div>
+		<div class = "well">
+			<div class="graph-container">
+				<h2 class="text-danger text-center">Expenses ($)</h2>
+				<div id="expensechart" style="height: 400px; width: 600px;"></div>
 			</div>
 			<br></br>
 		</div>
@@ -163,5 +180,41 @@ new Morris.Bar({
   xkey: 'y',
   ykeys: ['a'],
   labels: ['Revenues']
+});
+</script>
+
+<script type="text/javascript">
+new Morris.Bar({
+  element: 'expensechart',
+  data: [
+<?php
+	for ($i=0;$i<=$eyear-1;$i++)
+	{
+		echo '{ y: '.($i+$project->start_year).', a: '.$exp_sum_amount[$i].' },';
+	}
+	echo '{ y: '.$project->end_year.', a: '.$exp_sum_amount[$eyear].' }'; 
+?>
+  ],
+  xkey: 'y',
+  ykeys: ['a'],
+  labels: ['Expenses']
+});
+</script>
+
+<script type="text/javascript">
+new Morris.Bar({
+  element: 'nopatchart',
+  data: [
+<?php
+	for ($i=0;$i<=$eyear-1;$i++)
+	{
+		echo '{ y: '.($i+$project->start_year).', a: '.$nopat[$i].' },';
+	}
+	echo '{ y: '.$project->end_year.', a: '.$nopat[$eyear].' }'; 
+?>
+  ],
+  xkey: 'y',
+  ykeys: ['a'],
+  labels: ['NOPAT']
 });
 </script>
