@@ -4,9 +4,7 @@
 
 <!-- Include common navigation bar -->
 @include('common-navigation')
-
-<div class="container">
-	<div class="col-sm-6 col-md-4 col-md-offset-4">		
+<div class= "col-lg-4 col-md-offset-4">
 		<h1 class="text-center">Create a New Project</h1>
 
 		@if ( Session::has('flash_message') )			 
@@ -18,16 +16,15 @@
 		@foreach($errors->all() as $message)
 			<div>{{ $message }}</div>
 		@endforeach
-		<div class="account-wall">
-			<div class="form-signin">			
+		<div class="well">	
 
 				{{ Form::open(array('url' => '/create-project/{id}')) }}
 
 					{{ Form::label('project_name', 'Project Name') }}
-					{{ Form::text('project_name') }}</br></br>
+					{{ Form::text('project_name', Null, array('class' => 'form-control', 'autofocus')) }}</br>
 
 					{{ Form::label('project_description', 'Project Description') }}
-					{{ Form::text('project_description') }}</br></br>
+					{{ Form::text('project_description', Null, array('class' => 'form-control', 'autofocus')) }}</br>
 
 					{{ Form::label('start_year', 'Start Year') }}
 					{{ Form::select('start_year', array(
@@ -41,7 +38,7 @@
 						'2021' => '2021',
 						'2022' => '2023',
 						'2023' => '2023',
-						'2024' => '2024')) }}
+						'2024' => '2024'), Null, array('class' => 'form-control', 'autofocus')) }}</br>
 											
 					{{ Form::label('end_year', 'End Year') }}
 					{{ Form::select('end_year', array(
@@ -55,31 +52,29 @@
 						'2021' => '2021',
 						'2022' => '2023',
 						'2023' => '2023',
-						'2024' => '2024')) }}</br></br>
+						'2024' => '2024'), Null, array('class' => 'form-control', 'autofocus')) }}</br>
 
 					{{ Form::label('tax_rate', 'Project Tax Rate') }}
-					{{ Form::text('tax_rate') }}</br></br>
+					{{ Form::text('tax_rate', Null, array('class' => 'form-control', 'autofocus')) }}</br>
 
 					{{ Form::label('discount_rate', 'Project Discount Rate') }}
-					{{ Form::text('discount_rate') }}</br></br>
+					{{ Form::text('discount_rate', Null, array('class' => 'form-control', 'autofocus')) }}</br>
 
 					{{ Form::label('terminal_growth_rate', 'Terminal Growth Rate') }}
-					{{ Form::text('terminal_growth_rate') }}</br></br>
+					{{ Form::text('terminal_growth_rate', Null, array('class' => 'form-control', 'autofocus')) }}</br>
 
 					{{ Form::label('terminal_rd', 'Terminal R&D Expense % of Sales') }}
-					{{ Form::text('terminal_rd') }}</br></br>			
+					{{ Form::text('terminal_rd', Null, array('class' => 'form-control', 'autofocus')) }}</br>			
 
 					{{ Form::label('terminal_sga', 'Terminal SG&A Expense % of Sales') }}
-					{{ Form::text('terminal_sga') }}</br></br>
+					{{ Form::text('terminal_sga', Null, array('class' => 'form-control', 'autofocus')) }}</br>
 
 					{{ Form::label('capex_percentage', 'Capex % of Sales') }}
-					{{ Form::text('capex_percentage') }}</br></br>
+					{{ Form::text('capex_percentage', Null, array('class' => 'form-control', 'autofocus')) }}</br>
 
 					{{ Form::submit('Create Project', array('class'=>'btn btn-lg btn-primary btn-block')) }}
 
 				{{ Form::close() }}
 			</div>
-		</div>
-	</div>
 </div>
 @stop
