@@ -18,7 +18,8 @@
 				<div>{{ $message }}</div>
 			@endforeach
 			<a href="/user-dashboard/{{ $user->id }}" class="btn btn-default pull-right">Return to User Dashboard</a>
-			<a href="/user-project/{{ $user->id }}" class="btn btn-warning pull-right">Return to User Projects</a></h2>
+			<a href="/user-project/{{ $user->id }}" class="btn btn-warning pull-right">Return to User Projects</a>
+			<a href="/view-project/{{ $user->id }}/{{ $project->id }}" class="btn btn-info pull-right">View Project</a></h2></h2>
 			<div class = "col-lg-4">
 				<div class = "well-password-big">
 					<h2 class = "text-info">Project Parameters</h2>
