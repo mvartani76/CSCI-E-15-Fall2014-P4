@@ -14,6 +14,25 @@ class UserController extends BaseController {
 	* Show the new user signup form
 	* @return View
 	*/
+	public function getUserlogin() {
+		return View::make('user-login');
+	}
+
+	public function postUserlogin() {
+		$credentials = Input::only('email', 'password');
+		$remember_me = Input::get('remember_me');
+		if (Auth::attempt($credentials, $remember_me)) {
+			return Redirect::intended('/user-dashboard/{id}')->with('flash_message', 'Welcome Back!');
+		}
+		else {
+			return Redirect::to('/user-login')
+				->with('flash_message', 'Log in failed; please try again.')
+				->withInput();
+		}
+		return Redirect::to('/user-dashboard/{id}');
+	}
+
+
 	public function getCreateuser() {
 		return View::make('create-user');
 	}

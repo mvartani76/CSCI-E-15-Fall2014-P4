@@ -13,11 +13,13 @@
 
 /* Use a controller to get the Index logic */
 Route::get('/', 'IndexController@getIndex');
-Route::post('/', ['before' => 'csrf', 'uses' => 'IndexController@postIndex'] );
-Route::get('/logout', ['before' => 'auth', 'uses' => 'IndexController@getLogout'] );
 
 // Display the form for a new user
 // Using a controller to show this form as well as additional logic/validation
+Route::get('/user-login','UserController@getUserlogin');
+Route::post('/user-login', ['before' => 'auth', 'uses' => 'UserController@postUserlogin'] );
+Route::get('/logout', ['before' => 'auth', 'uses' => 'IndexController@getLogout'] );
+
 Route::get('/create-user', 'UserController@getCreateuser');
 Route::post('/create-user', ['before' => 'csrf', 'uses' => 'UserController@postCreateuser'] );
 Route::get('/edit-user/{id}', 'UserController@getEdituser');
