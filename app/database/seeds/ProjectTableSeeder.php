@@ -6,6 +6,7 @@ class ProjectTableSeeder extends Seeder {
 		DB::statement('TRUNCATE projects');
 
 		# Revenue_types
+		# Values for tax_rate through capex_percentage are in % units...
 	    $project1 = new Project();
 		$project1->project_name = 'Project 1';
 		$project1->project_description = 'Project 1 Description';
