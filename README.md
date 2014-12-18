@@ -21,6 +21,8 @@ Initial diagram description...
 
 ![](https://github.com/mvartani76/CSCI-E-15-Fall2014-P4/blob/master/p4_database_diagram.jpg)
 
+As I started implementing the code, I didn't follow the diagram exactly and a few of the tables were not used such as permissions and proformas... I also added more tables after creating the diagram but the diagram helped a lot when trying to visualize the relationships..
+
 ### Interesting Observations / Code Modifications
 
 The debugbars were actually adding the glyphicons from font-awesome.css so I needed to copy the /fonts/ directory over from one of the packages to the production server to get the glyphicons to work...
