@@ -99,12 +99,12 @@
 	                        <table class="table table-bordered table-striped">
 	                            <thead>
 	                                <tr>
-	                                    <th class="tablecell-size2-small-text">Revenue Type</th>
-	                                    <th class="tablecell-size2-small-text">Revenue Description</th>
-	                                    <th class="tablecell-size2-small-text">Amount</th>
-	                                    <th class="tablecell-size2-small-text">Year</th>
-	                                    <th class="tablecell-size2-small-text">Date/Time Last Modified</th>
-	                                    <th class="tablecell-size2-small-text">Edit/Delete</th>
+	                                    <th class="tablecell-size3-small-text">Revenue Type</th>
+	                                    <th class="tablecell-size6-small-text">Revenue Description</th>
+	                                    <th class="tablecell-size3-small-text">Amount</th>
+	                                    <th class="tablecell-size3-small-text">Year</th>
+	                                    <th class="tablecell-size5-small-text">Date/Time Last Modified</th>
+	                                    <th class="tablecell-size5-small-text">Edit/Delete</th>
 	                                </tr>
 	                            </thead>
 	                 
@@ -116,12 +116,12 @@
                                     <!-- Do not understand why I need the foreach to access project_name but this is all that worked? -->
                                     <!-- It worked with multiple projects assigned to a given user so I am sticking with it for now -->
                                     <?php foreach($revenue['revenue_types'] as $revenue2): ?>
-                                        <td class="tablecell-size2-small-text"><?php echo $revenue2->revenuetype; ?></td>
+                                        <td class="tablecell-size3"><?php echo $revenue2->revenuetype; ?></td>
                                     <?php endforeach ?>
-	                                    <td class="tablecell-size2-small-text">{{ $revenue->revenue_description }}</td>
-										<td class="tablecell-size2-small-text">{{ $revenue->amount }}</td>
-										<td class="tablecell-size2-small-text">{{ $revenue->year }}</td>
-	                                    <td class="tablecell-size2-small-text">{{ $revenue->updated_at->format('F d, Y h:ia') }}</td>
+	                                    <td class="tablecell-size6">{{ $revenue->revenue_description }}</td>
+										<td class="tablecell-size3">{{ $revenue->amount }}</td>
+										<td class="tablecell-size3">{{ $revenue->year }}</td>
+	                                    <td class="tablecell-size5">{{ $revenue->updated_at->format('F d, Y h:ia') }}</td>
 	                                    <td>
 	                                        <a href="/edit-revenue/{{ $user->id }}/{{ $project->id }}/{{ $revenue->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
 	                                        <!-- Needed to suffix a /1 to the end to differentiate from the delete expense -->
@@ -147,12 +147,12 @@
 	                        <table class="table table-bordered table-striped">
 	                            <thead>
 	                                <tr>
-	                                    <th class="tablecell-size1">Expense Type</th>
+	                                    <th class="tablecell-size3">Expense Type</th>
 	                                    <th class="tablecell-size6">Expense Description</th>
-	                                    <th class="tablecell-size6">Amount</th>
-	                                    <th class="tablecell-size6">Year</th>
+	                                    <th class="tablecell-size3">Amount</th>
+	                                    <th class="tablecell-size3">Year</th>
 	                                    <th class="tablecell-size5">Date/Time Last Modified</th>
-	                                    <th>Edit/Delete</th>
+	                                    <th class="tablecell-size5">Edit/Delete</th>
 	                                </tr>
 	                            </thead>
 	                 
@@ -167,8 +167,8 @@
                                         <td class="tablecell-size3"><?php echo $expense2->expensetype; ?></td>
                                     <?php endforeach ?>
 	                                    <td class="tablecell-size6">{{ $expense->expense_description }}</td>
-										<td class="tablecell-size6">{{ $expense->amount }}</td>
-										<td class="tablecell-size6">{{ $expense->year }}</td>
+										<td class="tablecell-size3">{{ $expense->amount }}</td>
+										<td class="tablecell-size3">{{ $expense->year }}</td>
 	                                    <td class="tablecell-size5">{{ $expense->updated_at->format('F d, Y h:ia') }}</td>
 	                                    <td>
 	                                        <a href="/edit-expense/{{ $user->id }}/{{ $project->id }}/{{ $expense->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
