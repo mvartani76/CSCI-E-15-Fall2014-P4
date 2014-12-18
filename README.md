@@ -13,7 +13,7 @@ The goal for this project is to emulate what is done using these spreadsheets an
 
 ## Demo
 
-As a remote student, my demo is located in jing at the following location (TBD).
+As a remote student, my demo is located in jing at the following location: http://screencast.com/t/cVWNHi5w63R
 
 ## Details for Teaching Team
 
