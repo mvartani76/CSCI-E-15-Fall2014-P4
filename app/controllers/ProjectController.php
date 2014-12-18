@@ -286,5 +286,10 @@ class ProjectController extends BaseController {
 	    }
 	}
 
-
+	public function getViewproject($uid,$pid) {
+		$project = Project::find($pid);
+		$user = Auth::user();
+		$revenue = Revenue::all();
+		return View::make('/view-project',['user' => $user],['project' => $project])->withOnly('project');
+	}
 }

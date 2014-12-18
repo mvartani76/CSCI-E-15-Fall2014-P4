@@ -45,6 +45,7 @@ Route::get('/edit-expense/{uid}/{pid}/{eid}', 'ProjectController@getEditexpense'
 Route::post('/edit-expense/{uid}/{pid}/{eid}', 'ProjectController@postEditexpense');
 Route::delete('/edit-project/{uid}/{pid}/{rid}/1', 'ProjectController@deleterevenue');
 Route::delete('/edit-project/{uid}/{pid}/{eid}/2', 'ProjectController@deleteexpense');
+Route::get('/view-project/{uid}/{pid}', 'ProjectController@getViewproject');
 
 /* Comment Related Routes */
 Route::get('/create-comment/{id}', 'CommentController@getCreatecomment');
