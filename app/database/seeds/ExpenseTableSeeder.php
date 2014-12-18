@@ -140,7 +140,7 @@ class ExpenseTableSeeder extends Seeder {
 
 		$expense23 = new Expense();
 		$expense23->expense_description = 'Proj 1 Salary Expense';
-		$expense23->amount = 60000;
+		$expense23->amount = 6000;
 		$expense23->year = 2018;
 		$expense23->save();
 
@@ -159,151 +159,151 @@ class ExpenseTableSeeder extends Seeder {
 	    $expense26 = new Expense();
 		$expense26->expense_description = 'Proj 3 Cost of the HW products';
 		$expense26->amount = 7000;
-		$expense26->year = 2019;
+		$expense26->year = 2016;
 		$expense26->save();
 
 		$expense27 = new Expense();
 		$expense27->expense_description = 'Proj 3 Selling Expenses';
 		$expense27->amount = 7000;
-		$expense27->year = 2019;
+		$expense27->year = 2016;
 		$expense27->save();
 
 		$expense28 = new Expense();
 		$expense28->expense_description = 'Proj 3 Salary Expense';
 		$expense28->amount = 7000;
-		$expense28->year = 2019;
+		$expense28->year = 2016;
 		$expense28->save();
 
 		$expense29 = new Expense();
 		$expense29->expense_description = 'Proj 3 Travel Expense';
 		$expense29->amount = 7000;
-		$expense29->year = 2019;
+		$expense29->year = 2016;
 		$expense29->save();
 
 		$expense30 = new Expense();
 		$expense30->expense_description = 'Proj 3 Rent Expense';
 		$expense30->amount = 7000;
-		$expense30->year = 2019;
+		$expense30->year = 2016;
 		$expense30->save();
 
 	    $expense31 = new Expense();
 		$expense31->expense_description = 'Proj 3 Cost of the HW products';
 		$expense31->amount = 8000;
-		$expense31->year = 2020;
+		$expense31->year = 2017;
 		$expense31->save();
 
 		$expense32 = new Expense();
 		$expense32->expense_description = 'Proj 3 Selling Expenses';
 		$expense32->amount = 8000;
-		$expense32->year = 2020;
+		$expense32->year = 2017;
 		$expense32->save();
 
 		$expense33 = new Expense();
 		$expense33->expense_description = 'Proj 3 Salary Expense';
 		$expense33->amount = 8000;
-		$expense33->year = 2020;
+		$expense33->year = 2017;
 		$expense33->save();
 
 		$expense34 = new Expense();
 		$expense34->expense_description = 'Proj 3 Travel Expense';
 		$expense34->amount = 8000;
-		$expense34->year = 2020;
+		$expense34->year = 2017;
 		$expense34->save();
 
 		$expense35 = new Expense();
 		$expense35->expense_description = 'Proj 3 Rent Expense';
 		$expense35->amount = 8000;
-		$expense35->year = 2020;
+		$expense35->year = 2017;
 		$expense35->save();
 
 	    $expense36 = new Expense();
 		$expense36->expense_description = 'Proj 3 Cost of the HW products';
 		$expense36->amount = 8000;
-		$expense36->year = 2020;
+		$expense36->year = 2018;
 		$expense36->save();
 
 		$expense37 = new Expense();
 		$expense37->expense_description = 'Proj 3 Selling Expenses';
 		$expense37->amount = 8000;
-		$expense37->year = 2020;
+		$expense37->year = 2018;
 		$expense37->save();
 
 		$expense38 = new Expense();
 		$expense38->expense_description = 'Proj 3 Salary Expense';
 		$expense38->amount = 8000;
-		$expense38->year = 2020;
+		$expense38->year = 2018;
 		$expense38->save();
 
 		$expense39 = new Expense();
 		$expense39->expense_description = 'Proj 3 Travel Expense';
 		$expense39->amount = 8000;
-		$expense39->year = 2020;
+		$expense39->year = 2018;
 		$expense39->save();
 
 		$expense40 = new Expense();
 		$expense40->expense_description = 'Proj 3 Rent Expense';
 		$expense40->amount = 8000;
-		$expense40->year = 2020;
+		$expense40->year = 2018;
 		$expense40->save();
 
 	    $expense41 = new Expense();
 		$expense41->expense_description = 'Proj 3 Cost of the HW products';
 		$expense41->amount = 9000;
-		$expense41->year = 2021;
+		$expense41->year = 2019;
 		$expense41->save();
 
 		$expense42 = new Expense();
 		$expense42->expense_description = 'Proj 3 Selling Expenses';
 		$expense42->amount = 9000;
-		$expense42->year = 2021;
+		$expense42->year = 2019;
 		$expense42->save();
 
 		$expense43 = new Expense();
 		$expense43->expense_description = 'Proj 3 Salary Expense';
 		$expense43->amount = 9000;
-		$expense43->year = 2021;
+		$expense43->year = 2019;
 		$expense43->save();
 
 		$expense44 = new Expense();
 		$expense44->expense_description = 'Proj 3 Travel Expense';
 		$expense44->amount = 9000;
-		$expense44->year = 2021;
+		$expense44->year = 2019;
 		$expense44->save();
 
 		$expense45 = new Expense();
 		$expense45->expense_description = 'Proj 3 Rent Expense';
 		$expense45->amount = 9000;
-		$expense45->year = 2021;
+		$expense45->year = 2019;
 		$expense45->save();
 
 	    $expense46 = new Expense();
 		$expense46->expense_description = 'Proj 3 Cost of the HW products';
 		$expense46->amount = 10000;
-		$expense46->year = 2022;
+		$expense46->year = 2020;
 		$expense46->save();
 
 		$expense47 = new Expense();
 		$expense47->expense_description = 'Proj 3 Selling Expenses';
 		$expense47->amount = 10000;
-		$expense47->year = 2022;
+		$expense47->year = 2020;
 		$expense47->save();
 
 		$expense48 = new Expense();
 		$expense48->expense_description = 'Proj 3 Salary Expense';
 		$expense48->amount = 10000;
-		$expense48->year = 2022;
+		$expense48->year = 2020;
 		$expense48->save();
 
 		$expense49 = new Expense();
 		$expense49->expense_description = 'Proj 3 Travel Expense';
 		$expense49->amount = 10000;
-		$expense49->year = 2022;
+		$expense49->year = 2020;
 		$expense49->save();
 
 		$expense50 = new Expense();
 		$expense50->expense_description = 'Proj 3 Rent Expense';
 		$expense50->amount = 10000;
-		$expense50->year = 2022;
+		$expense50->year = 2020;
 		$expense50->save();		
 	}
 }
