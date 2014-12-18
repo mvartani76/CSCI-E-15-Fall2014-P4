@@ -20,8 +20,12 @@ As a remote student, my demo is located in jing at the following location (TBD).
 ### Interesting Observations / Code Modifications
 
 ## Outside Code
-Used the following GitHub for login form inspiration...
+Used the following GitHub code for login form inspiration...
 https://gist.github.com/bMinaise/7329874
+
+Used the following github code for creating bar charts...
+http://morrisjs.github.io/morris.js/
+This is provided under BSD license
 
 ## Laravel PHP Framework
 
