@@ -37,10 +37,10 @@
                             <thead>
                                 <tr>
                                     <th class="tablecell-size1">Project Name</th>
-                                    <th class="tablecell-size6">Project Description</th>
+                                    <th class="tablecell-size2">Project Description</th>
                                     <th class="tablecell-size5">Date/Time Created</th>
                                     <th class="tablecell-size5">Date/Time Last Modified</th>
-                                    <th>Edit/Delete</th>
+                                    <th>View/Edit/Delete</th>
                                 </tr>
                             </thead>
                  
@@ -49,10 +49,11 @@
                                 @foreach($user['projects'] as $project)
                                 <tr>
                                     <td class="tablecell-size1">{{ $project->project_name }}</td>
-                                    <td class="tablecell-size6">{{ $project->project_description }}</td>
+                                    <td class="tablecell-size2">{{ $project->project_description }}</td>
                                     <td class="tablecell-size5">{{ $project->created_at->format('F d, Y h:ia') }}</td>
                                     <td class="tablecell-size5">{{ $project->updated_at->format('F d, Y h:ia') }}</td>
                                     <td>
+                                        <a href="/view-project/{{ $user->id }}/{{ $project->id }}" class="btn btn-warning pull-left" style="margin-right: 3px;">View</a>
                                         <a href="/edit-project/{{ $user->id }}/{{ $project->id }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
                                         {{ Form::open(['url' => '/user-project/' .$user->id . '/' . $project->id, 'method' => 'DELETE']) }}
                                         {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
